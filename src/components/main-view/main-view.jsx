@@ -9,9 +9,11 @@ class MainView extends React.Component {
       movies: [
         {
           _id: 1,
-          Title: 'Inception',
-          Description: 'desc1...',
-          ImagePath: '...',
+          Title: 'Spaceballs',
+          Description:
+            'A star-pilot for hire and his trusty sidekick must come to the rescue of a princess and save Planet Druidia from the clutches of the evil Spaceballs.',
+          ImagePath:
+            'https://m.media-amazon.com/images/M/MV5BNjNhZTk0ZmEtNjJhMi00YzFlLWE1MmEtYzM1M2ZmMGMwMTU4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg',
         },
         {
           _id: 2,

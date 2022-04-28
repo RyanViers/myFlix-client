@@ -27870,11 +27870,11 @@ function LoginView(props) {
                 children: "Submit"
             }),
             /*#__PURE__*/ _jsxRuntime.jsx("button", {
-                className: "registerButton",
+                type: "sumbit",
                 onClick: handleSubmit,
                 __source: {
                     fileName: "src/components/login-view/login-view.jsx",
-                    lineNumber: 37
+                    lineNumber: 38
                 },
                 __self: this,
                 children: "Register"

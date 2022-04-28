@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 export function RegistrationView(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
-  const [Birthday, setBirthday] = useState('');
+  const [birthday, setBirthday] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username, password, email, Birthday);
+    console.log(username, password, email, birthday);
 
     props.onRegistration(username);
   };
@@ -44,7 +44,7 @@ export function RegistrationView(props) {
         Birthday:
         <input
           type="date"
-          value={Birthday}
+          value={birthday}
           onChange={(e) => setBirthday(e.target.value)}
         />
       </label>

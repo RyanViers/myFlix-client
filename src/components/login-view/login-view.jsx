@@ -34,6 +34,9 @@ export function LoginView(props) {
       <button type="submit" onClick={handleSubmit}>
         Submit
       </button>
+      <button className="registerButton" onClick={handleSubmit}>
+        Register
+      </button>
     </form>
   );
 }

@@ -1,5 +1,19 @@
 $color: steelblue;
+$mainPageColor: orange;
+
+.app-container {
+  background-color: $mainPageColor;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .my-flix {
-  color: $color;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: $color;
+  border: solid black 5px;
 }

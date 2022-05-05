@@ -1,4 +1,143 @@
+.app-container {
+  background-color: orange;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .my-flix {
-  color: steelblue;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: steelblue;
+  border: solid black 5px;
+}
+#movie-card {
+  margin-top: 15px;
+  background-color: beige;
+  border: solid black 5px;
+}
+:root {
+  --fontsize-movie-title: 30px;
+  --fontweight-movie-title: 600;
+  --fontsize-movie-description: 20px;
+  --fontweight-movie-description: 400;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "League Spartan", sans-serif;
+}
+
+#movie-view {
+  border: solid #020402 5px;
+  min-height: 500px;
+  background-color: aqua;
+}
+
+#movie-view-image {
+  margin-bottom: 20px;
+}
+
+#movie-title {
+  text-align: center;
+  font-size: var(--fontsize-movie-title);
+  font-weight: var(--fontweight-movie-title);
+}
+
+#movie-description {
+  font-size: var(--fontsize-movie-description);
+  font-weight: var(--fontweight-movie-description);
+}
+
+#movie-director {
+  font-size: var(--fontsize-movie-description);
+  font-weight: var(--fontweight-movie-description);
+}
+
+#movie-genre {
+  font-size: var(--fontsize-movie-description);
+  font-weight: var(--fontweight-movie-description);
+}
+
+#movie-view-button {
+  margin-top: 20px;
+  margin-bottom: 100px;
+  margin-right: 20px;
+  color: #f1fffa;
+  background-color: steelblue;
+  border: solid #020402 1px;
+}
+#login-button {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  background-color: rgb(182, 47, 47);
+  border: none;
+  float: left;
+  margin-top: 25px;
+  border: solid black 1px;
+}
+
+#login-register-button {
+  margin-left: 10px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  background-color: rgb(182, 47, 47);
+  border: none;
+  float: left;
+  margin-top: 25px;
+  border: solid black 1px;
+}
+
+:root {
+  --fontsize-login-card-title: 30px;
+  --fontweight-login-card-title: 600;
+  --fontsize-form-description: 20px;
+  --fontweight-form-description: 400;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "League Spartan", sans-serif;
+}
+
+#registration-form {
+  max-width: 500px;
+}
+
+#registration-form-label {
+  font-size: var(--fontsize-form-description);
+  font-weight: var(--fontweight-form-description);
+  margin-top: 15px;
+  margin-bottom: 0;
+  color: #f1fffa;
+}
+
+#registration-card-title {
+  font-size: var(--fontsize-login-card-title);
+  font-weight: var(--fontweight-login-card-title);
+  text-align: center;
+  color: #e5383b;
+}
+
+#registration-card {
+  border-color: #f1fffa;
+  border-width: 10px;
+  padding: 15px;
+  background-color: #020402;
+}
+
+#register-button {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #f1fffa;
+  background-color: #e5383b;
+  border: none;
+  float: right;
+  margin-top: 25px;
+  font-size: var(--fontsize-form-description);
+  font-weight: var(--fontweight-form-description);
 }
 /*# sourceMappingURL=index.caa67093.css.map */

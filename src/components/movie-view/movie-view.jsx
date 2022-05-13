@@ -1,12 +1,13 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import './movie-view.scss';
 
-import { Container, Row, Col, Button, Card, CardGroup } from 'react-bootstrap';
+import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 
 export class MovieView extends React.Component {
   render() {
-    const { movie, onBackClick } = this.props;
+    const { user, movie, onBackClick, addFavoriteMovie } = this.props;
 
     return (
       <Container>
@@ -31,17 +32,38 @@ export class MovieView extends React.Component {
                 <Card.Text id="movie-director" className="movie-director">
                   Director: {movie.Director.Name}
                 </Card.Text>
+
                 <Button
                   id="movie-view-button"
                   onClick={() => {
-                    onBackClick(null);
+                    onBackClick();
                   }}
                 >
                   Back
                 </Button>
-                <Button id="movie-view-button" onClick={() => {}}>
+
+                <Button
+                  variant="secondary"
+                  id="movie-view-button"
+                  onClick={() => {
+                    addFavoriteMovie(movie, user);
+                    alert('Added to Favorites');
+                  }}
+                >
                   Add To Favorite Movies
                 </Button>
+
+                <Link to={`/directors/${movie.Director.Name}`}>
+                  <Button variant="link" id="movie-view-button">
+                    Director
+                  </Button>
+                </Link>
+
+                <Link to={`/genre/${movie.Genre.Name}`}>
+                  <Button variant="link" id="movie-view-button">
+                    Genre
+                  </Button>
+                </Link>
               </Card.Body>
             </Card>
           </Col>
@@ -58,13 +80,14 @@ MovieView.propTypes = {
     Genre: propTypes.shape({
       Name: propTypes.string.isRequired,
       Description: propTypes.string.isRequired,
-    }),
+    }).isRequired,
     Director: propTypes.shape({
       Name: propTypes.string.isRequired,
-      Bio: propTypes.string.isRequired,
-      BirthYear: propTypes.number.isRequired,
-    }),
+      Bio: propTypes.string,
+      BirthYear: propTypes.string,
+    }).isRequired,
     Actors: propTypes.array.isRequired,
     ImagePath: propTypes.string.isRequired,
   }).isRequired,
+  onBackClick: propTypes.func.isRequired,
 };

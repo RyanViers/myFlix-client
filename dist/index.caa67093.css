@@ -90,7 +90,6 @@
   margin-top: 25px;
   border: solid black 1px;
 }
-
 :root {
   --fontsize-login-card-title: 30px;
   --fontweight-login-card-title: 600;
@@ -139,5 +138,9 @@
   margin-top: 25px;
   font-size: var(--fontsize-form-description);
   font-weight: var(--fontweight-form-description);
+}
+#logout-button {
+  border: solid black 2px;
+  background-color: orange;
 }
 /*# sourceMappingURL=index.caa67093.css.map */

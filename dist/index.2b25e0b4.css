@@ -1,0 +1,213 @@
+#logout-button {
+  background-color: orange;
+  border: 2px solid #000;
+}
+
+#login-button {
+  float: left;
+  background-color: #b62f2f;
+  border: 1px solid #000;
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
+#login-register-button {
+  float: left;
+  background-color: #b62f2f;
+  border: 1px solid #000;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+#movie-card {
+  background-color: beige;
+  border: 5px solid #000;
+  margin-top: 15px;
+}
+
+:root {
+  --fontsize-movie-title: 30px;
+  --fontweight-movie-title: 600;
+  --fontsize-movie-description: 20px;
+  --fontweight-movie-description: 400;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: League Spartan, sans-serif;
+}
+
+#movie-view {
+  min-height: 500px;
+  background-color: #0ff;
+  border: 5px solid #020402;
+}
+
+#movie-view-image {
+  margin-bottom: 20px;
+}
+
+#movie-title {
+  text-align: center;
+  font-size: var(--fontsize-movie-title);
+  font-weight: var(--fontweight-movie-title);
+}
+
+#movie-description, #movie-director, #movie-genre {
+  font-size: var(--fontsize-movie-description);
+  font-weight: var(--fontweight-movie-description);
+}
+
+#movie-view-button {
+  color: #f1fffa;
+  background-color: #4682b4;
+  border: 1px solid #020402;
+  margin-top: 20px;
+  margin-bottom: 100px;
+  margin-right: 20px;
+}
+
+:root {
+  --fontsize-login-card-title: 30px;
+  --fontweight-login-card-title: 600;
+  --fontsize-form-description: 20px;
+  --fontweight-form-description: 400;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: League Spartan, sans-serif;
+}
+
+#registration-form {
+  max-width: 500px;
+}
+
+#registration-form-label {
+  font-size: var(--fontsize-form-description);
+  font-weight: var(--fontweight-form-description);
+  color: #f1fffa;
+  margin-top: 15px;
+  margin-bottom: 0;
+}
+
+#registration-card-title {
+  font-size: var(--fontsize-login-card-title);
+  font-weight: var(--fontweight-login-card-title);
+  text-align: center;
+  color: #e5383b;
+}
+
+#registration-card {
+  background-color: #020402;
+  border-width: 10px;
+  border-color: #f1fffa;
+  padding: 15px;
+}
+
+#register-button {
+  color: #f1fffa;
+  float: right;
+  font-size: var(--fontsize-form-description);
+  font-weight: var(--fontweight-form-description);
+  background-color: #e5383b;
+  border: none;
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
+.fav-movie {
+  margin-bottom: 15px;
+}
+
+.fav-movie figure {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  color: #000;
+  position: relative;
+  overflow: hidden;
+}
+
+.fav-movie img {
+  height: 400px;
+  margin: auto;
+  display: block;
+}
+
+.fav-movie figcaption {
+  text-align: center;
+  color: #000;
+  font-size: medium;
+  font-weight: bold;
+}
+
+.fav-movie button {
+  margin: auto;
+  display: block;
+}
+
+h1 {
+  text-align: center;
+  background: orange;
+  padding: auto;
+  font-weight: bold;
+}
+
+#user-row {
+  margin-top: 50px;
+}
+
+#update-user-card {
+  background-color: inherit;
+  border: 2px solid #000;
+  margin-bottom: 20px;
+  display: flex;
+}
+
+.userdata-card {
+  background-color: green;
+}
+
+#favorite-movies-card {
+  background-color: inherit;
+  border: none;
+}
+
+#update-form {
+  background-color: orange;
+}
+
+#director-view {
+  background-color: beige;
+  border: 5px solid #000;
+  margin-top: 50px;
+  padding: 50px;
+}
+
+#genre-view {
+  background-color: beige;
+  border: 5px solid #000;
+  margin-top: 50px;
+  padding: 50px;
+}
+
+.app-container {
+  min-height: 100vh;
+  background-color: orange;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.my-flix {
+  background-color: #4682b4;
+  border: 5px solid #000;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+/*# sourceMappingURL=index.2b25e0b4.css.map */

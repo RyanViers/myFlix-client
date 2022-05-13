@@ -1,0 +1,57 @@
+.fav-movie {
+  margin-bottom: 15px;
+  figure {
+    position: relative;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    color: black;
+  }
+  img {
+    display: block;
+    height: 400px;
+    margin: auto;
+  }
+  figcaption {
+    text-align: center;
+    color: black;
+    font-weight: bold;
+    font-size: medium;
+  }
+  button {
+    display: block;
+    margin: auto;
+  }
+}
+
+h1 {
+  text-align: center;
+  font-weight: bold;
+  padding: auto;
+  background: orange;
+}
+
+#user-row {
+  margin-top: 50px;
+}
+
+#update-user-card {
+  background-color: inherit;
+  border: solid black 2px;
+  margin-bottom: 20px;
+  display: flex;
+}
+
+.userdata-card {
+  background-color: green;
+}
+
+#favorite-movies-card {
+  background-color: inherit;
+  border: none;
+}
+
+#update-form {
+  background-color: orange;
+}

@@ -20,12 +20,6 @@
   margin-left: 10px;
 }
 
-#movie-card {
-  background-color: beige;
-  border: 5px solid #000;
-  margin-top: 15px;
-}
-
 :root {
   --fontsize-movie-title: 30px;
   --fontweight-movie-title: 600;
@@ -191,6 +185,12 @@ h1 {
   border: 5px solid #000;
   margin-top: 50px;
   padding: 50px;
+}
+
+#movie-card {
+  background-color: beige;
+  border: 5px solid #000;
+  margin-top: 15px;
 }
 
 .app-container {

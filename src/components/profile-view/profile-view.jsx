@@ -7,9 +7,8 @@ import './profile-view.scss';
 import { UserData } from './user-data';
 import { FavoriteMovies } from './favorite-movies';
 import { UpdateUser } from './update-user';
-import { connect } from 'react-redux';
 
-function ProfileView({ user, movies, onBackClick }) {
+export function ProfileView({ user, movies, onBackClick }) {
   const [userdata, setUserdata] = useState({});
   const [updatedUser, setUpdatedUser] = useState({});
   const [favoriteMoviesList, setFavoriteMoviesList] = useState([]);
@@ -142,5 +141,3 @@ function ProfileView({ user, movies, onBackClick }) {
     </Container>
   );
 }
-
-export default connect(mapStateToProps)(ProfileView);

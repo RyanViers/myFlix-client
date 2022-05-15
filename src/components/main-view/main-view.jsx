@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
-import { setMovies } from '../../actions/actions';
+import { setMovies, setUser, setUserData } from '../../actions/actions';
 import MoviesList from '../movies-list/movies-list';
 
 import { Container, Row, Col, Button } from 'react-bootstrap';
@@ -254,7 +254,9 @@ class MainView extends React.Component {
 }
 
 let mapStateToProps = (state) => {
-  return { movies: state.movies };
+  return { movies: state.movies, user: state.user, userData: state.userData };
 };
 
-export default connect(mapStateToProps, { setMovies })(MainView);
+export default connect(mapStateToProps, { setMovies, setUser, setUserData })(
+  MainView
+);

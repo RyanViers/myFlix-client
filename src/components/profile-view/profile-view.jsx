@@ -9,7 +9,7 @@ import { FavoriteMovies } from './favorite-movies';
 import { UpdateUser } from './update-user';
 import { connect } from 'react-redux';
 
-export function ProfileView({ user, movies, onBackClick }) {
+function ProfileView({ user, movies, onBackClick }) {
   const [userdata, setUserdata] = useState({});
   const [updatedUser, setUpdatedUser] = useState({});
   const [favoriteMoviesList, setFavoriteMoviesList] = useState([]);

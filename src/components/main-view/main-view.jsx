@@ -97,8 +97,8 @@ class MainView extends React.Component {
   }
 
   render() {
-    let { movies, user } = this.props;
-    //let { user } = this.state;
+    let { movies } = this.props;
+    let { user } = this.state;
     //const { movies, user } = this.state;
 
     return (

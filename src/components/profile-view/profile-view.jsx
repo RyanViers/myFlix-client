@@ -9,6 +9,11 @@ import { UserData } from './user-data';
 import { FavoriteMovies } from './favorite-movies';
 import { UpdateUser } from './update-user';
 
+const mapStateToProps = (state) => {
+  const { userData } = state;
+  return { userData };
+};
+
 function ProfileView({ userData }) {
   console.log(userData);
   /*const [userdata, setUserdata] = useState({});

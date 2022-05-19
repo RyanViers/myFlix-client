@@ -9,9 +9,8 @@ import { UserData } from './user-data';
 import { FavoriteMovies } from './favorite-movies';
 import { UpdateUser } from './update-user';
 
-export function ProfileView({ userData }) {
-  console.log(userData);
-  /*const [userdata, setUserdata] = useState({});
+export function ProfileView({ user }) {
+  const [userdata, setUserdata] = useState({});
   const [updatedUser, setUpdatedUser] = useState({});
   const [favoriteMoviesList, setFavoriteMoviesList] = useState([]);
 
@@ -27,8 +26,8 @@ export function ProfileView({ userData }) {
         setUserdata(response.data);
         setUpdatedUser(response.data);
         setFavoriteMoviesList(
-          //response.data.FavoriteMovies
-          movies.filter((m) => response.data.FavoriteMovies.includes(m._id))
+          response.data.FavoriteMovies
+          //movies.filter((m) => response.data.FavoriteMovies.includes(m._id))
         );
       })
       .catch((e) => {
@@ -42,7 +41,7 @@ export function ProfileView({ userData }) {
     } else {
       console.log('Not authorized');
     }
-  }, []);*/
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -110,7 +109,7 @@ export function ProfileView({ userData }) {
         <Col>
           <Card id="update-user-card">
             <Card.Body>
-              <UserData userData={userData} />
+              <UserData userdata={userdata} />
             </Card.Body>
           </Card>
 
@@ -123,7 +122,7 @@ export function ProfileView({ userData }) {
           <Card id="update-user-card">
             <Card.Body>
               <UpdateUser
-                userdata={userData}
+                userdata={userdata}
                 handleSubmit={handleSubmit}
                 handleUpdate={handleUpdate}
               />
@@ -135,8 +134,7 @@ export function ProfileView({ userData }) {
       <Card id="update-user-card">
         <Card.Body>
           <FavoriteMovies
-            favoriteMoviesList={userData.FavoriteMovies}
-            //favoriteMoviesList={favoriteMoviesList}
+            favoriteMoviesList={favoriteMoviesList}
             removeFav={removeFav}
           />
         </Card.Body>

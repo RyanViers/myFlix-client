@@ -17,7 +17,7 @@ import { LoginView } from '../login-view/login-view';
 import { MovieView } from '../movie-view/movie-view';
 import { NavbarView } from '../navbar-view/navbar';
 import { RegistrationView } from '../registration-view/registration-view';
-import { ProfileView } from '../profile-view/profile-view';
+import ProfileView from '../profile-view/profile-view';
 import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view';
 import { Redirect } from 'react-router-dom';
@@ -242,16 +242,10 @@ class MainView extends React.Component {
                 return (
                   <Col>
                     <ProfileView
-                      userData={userData}
-                      onBackClick={() => history.goBack()}
-                    />
-                  </Col>
-                  /*<Col>
-                    <ProfileView
                       user={user}
                       onBackClick={() => history.goBack()}
                     />
-                  </Col>*/
+                  </Col>
                 );
               }}
             />

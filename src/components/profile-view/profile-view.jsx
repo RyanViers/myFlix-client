@@ -44,11 +44,11 @@ function ProfileView({ user }) {
     }
   }, []);*/
 
-  const handleSubmit = (e) => {
+  /*const handleSubmit = (e) => {
     e.preventDefault();
     axios
       .put(
-        `https://ryan-viers-movie-app.herokuapp.com/users/${userdata.Username}`,
+        `https://ryan-viers-movie-app.herokuapp.com/users/${user.Username}`,
         updatedUser
       )
       .then((response) => {
@@ -102,7 +102,7 @@ function ProfileView({ user }) {
         console.error(e);
         alert('Unable to delete movie.');
       });
-  };
+  };*/
 
   return (
     <Container>
@@ -110,7 +110,7 @@ function ProfileView({ user }) {
         <Col>
           <Card id="update-user-card">
             <Card.Body>
-              <UserData userdata={userdata} />
+              <UserData userdata={user} />
             </Card.Body>
           </Card>
 
@@ -123,7 +123,7 @@ function ProfileView({ user }) {
           <Card id="update-user-card">
             <Card.Body>
               <UpdateUser
-                userdata={userdata}
+                userdata={user}
                 handleSubmit={handleSubmit}
                 handleUpdate={handleUpdate}
               />
@@ -135,7 +135,7 @@ function ProfileView({ user }) {
       <Card id="update-user-card">
         <Card.Body>
           <FavoriteMovies
-            favoriteMoviesList={favoriteMoviesList}
+            favoriteMoviesList={user.FavoriteMovies}
             removeFav={removeFav}
           />
         </Card.Body>

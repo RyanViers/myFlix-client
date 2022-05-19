@@ -36,6 +36,7 @@ class MainView extends React.Component {
     if (accessToken !== null) {
       const { setUser } = this.props;
       setUser(localStorage.getItem('user'));
+      console.log(setUser);
       /*this.setState({
         user: localStorage.getItem('user'),
       });*/

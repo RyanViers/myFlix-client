@@ -240,12 +240,13 @@ class MainView extends React.Component {
                   );
                 if (movies.length === 0) return <div className="main-view" />;
                 return (
-                  <Col>
+                  <ProfileView user={user} />
+                  /*<Col>
                     <ProfileView
                       user={user}
                       onBackClick={() => history.goBack()}
                     />
-                  </Col>
+                  </Col>*/
                 );
               }}
             />

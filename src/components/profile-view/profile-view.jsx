@@ -143,4 +143,4 @@ function ProfileView({ user }) {
   );
 }
 
-export default connect(mapStateToProps)(ProfileView);
+export default connect(null)(ProfileView);

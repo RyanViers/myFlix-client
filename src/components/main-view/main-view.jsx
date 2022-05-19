@@ -103,7 +103,7 @@ class MainView extends React.Component {
     console.log(authData);
     const { setUser } = this.props;
     setUser(authData.user.Username);
-    console.log(setUser);
+
     /*this.setState({
       user: authData.user.Username,
     });*/
@@ -126,7 +126,7 @@ class MainView extends React.Component {
     let { movies, user, userData } = this.props;
     //let { user } = this.state;
     //const { movies, user } = this.state;
-
+    console.log(userData);
     return (
       <Router>
         <Container>

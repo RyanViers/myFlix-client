@@ -4,13 +4,14 @@ import { connect } from 'react-redux';
 import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './profile-view.scss';
+import { setUserData } from '../../actions/actions';
 
 import { UserData } from './user-data';
 import { FavoriteMovies } from './favorite-movies';
 import { UpdateUser } from './update-user';
 
 function ProfileView({ user }) {
-  const [userdata, setUserdata] = useState({});
+  /*const [userdata, setUserdata] = useState({});
   const [updatedUser, setUpdatedUser] = useState({});
   const [favoriteMoviesList, setFavoriteMoviesList] = useState([]);
 
@@ -41,7 +42,7 @@ function ProfileView({ user }) {
     } else {
       console.log('Not authorized');
     }
-  }, []);
+  }, []);*/
 
   const handleSubmit = (e) => {
     e.preventDefault();

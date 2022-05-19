@@ -57,6 +57,20 @@ class MainView extends React.Component {
       });
   }
 
+  getUser(token) {
+    const username = localStorage.getItem('user');
+    axios
+      .get(`https://ryan-viers-movie-app.herokuapp.com/user/${username}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        this.props.setUser(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
   addFavoriteMovie(movie, user) {
     const token = localStorage.getItem('token');
     console.log(user.Email);
@@ -86,6 +100,7 @@ class MainView extends React.Component {
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user.Username);
     this.getMovies(authData.token);
+    this.getUser(authData.token);
   }
 
   onLoggedOut() {
@@ -97,8 +112,8 @@ class MainView extends React.Component {
   }
 
   render() {
-    let { movies } = this.props;
-    let { user } = this.state;
+    let { movies, user } = this.props;
+    //let { user } = this.state;
     //const { movies, user } = this.state;
 
     return (
@@ -253,7 +268,7 @@ class MainView extends React.Component {
 }
 
 let mapStateToProps = (state) => {
-  return { movies: state.movies };
+  return { movies: state.movies, user: state.user };
 };
 
-export default connect(mapStateToProps, { setMovies })(MainView);
+export default connect(mapStateToProps, { setMovies, setUser })(MainView);

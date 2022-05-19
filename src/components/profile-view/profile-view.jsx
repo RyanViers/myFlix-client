@@ -9,7 +9,8 @@ import { FavoriteMovies } from './favorite-movies';
 import { UpdateUser } from './update-user';
 
 export function ProfileView({ user, onBackClick }) {
-  const [userdata, setUserdata] = useState({});
+  console.log(user);
+  /*const [userdata, setUserdata] = useState({});
   const [updatedUser, setUpdatedUser] = useState({});
   const [favoriteMoviesList, setFavoriteMoviesList] = useState([]);
 
@@ -40,7 +41,7 @@ export function ProfileView({ user, onBackClick }) {
     } else {
       console.log('Not authorized');
     }
-  }, []);
+  }, []);*/
 
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -34,9 +34,11 @@ class MainView extends React.Component {
   componentDidMount() {
     let accessToken = localStorage.getItem('token');
     if (accessToken !== null) {
-      this.setState({
+      const { setUser } = this.props;
+      setUser(localStorage.getItem('user'));
+      /*this.setState({
         user: localStorage.getItem('user'),
-      });
+      });*/
       this.getMovies(accessToken);
     }
   }
@@ -60,7 +62,7 @@ class MainView extends React.Component {
   getUser(token) {
     const username = localStorage.getItem('user');
     axios
-      .get(`https://ryan-viers-movie-app.herokuapp.com/user/${username}`, {
+      .get(`https://ryan-viers-movie-app.herokuapp.com/users/${username}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {

@@ -9,7 +9,7 @@ import { UserData } from './user-data';
 import { FavoriteMovies } from './favorite-movies';
 import { UpdateUser } from './update-user';
 
-export function ProfileView({ user }) {
+function ProfileView({ user }) {
   const [userdata, setUserdata] = useState({});
   const [updatedUser, setUpdatedUser] = useState({});
   const [favoriteMoviesList, setFavoriteMoviesList] = useState([]);
@@ -142,3 +142,5 @@ export function ProfileView({ user }) {
     </Container>
   );
 }
+
+export default connect(mapStateToProps)(ProfileView);

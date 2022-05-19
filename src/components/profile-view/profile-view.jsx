@@ -9,8 +9,8 @@ import { UserData } from './user-data';
 import { FavoriteMovies } from './favorite-movies';
 import { UpdateUser } from './update-user';
 
-export function ProfileView({ user, onBackClick }) {
-  console.log(user);
+function ProfileView({ userData }) {
+  console.log(userData);
   /*const [userdata, setUserdata] = useState({});
   const [updatedUser, setUpdatedUser] = useState({});
   const [favoriteMoviesList, setFavoriteMoviesList] = useState([]);
@@ -110,7 +110,7 @@ export function ProfileView({ user, onBackClick }) {
         <Col>
           <Card id="update-user-card">
             <Card.Body>
-              <UserData userdata={userdata} />
+              <UserData userData={userData} />
             </Card.Body>
           </Card>
 
@@ -123,7 +123,7 @@ export function ProfileView({ user, onBackClick }) {
           <Card id="update-user-card">
             <Card.Body>
               <UpdateUser
-                userdata={userdata}
+                userdata={userData}
                 handleSubmit={handleSubmit}
                 handleUpdate={handleUpdate}
               />
@@ -135,7 +135,8 @@ export function ProfileView({ user, onBackClick }) {
       <Card id="update-user-card">
         <Card.Body>
           <FavoriteMovies
-            favoriteMoviesList={favoriteMoviesList}
+            favoriteMoviesList={userData.FavoriteMovies}
+            //favoriteMoviesList={favoriteMoviesList}
             removeFav={removeFav}
           />
         </Card.Body>
@@ -143,3 +144,5 @@ export function ProfileView({ user, onBackClick }) {
     </Container>
   );
 }
+
+export default connect(mapStateToProps)(ProfileView);

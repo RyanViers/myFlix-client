@@ -66,13 +66,12 @@ class MainView extends React.Component {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        setUserData({
+        this.props.setUserData({
           Name: response.data.Name,
           Email: response.data.Email,
           Birthday: response.data.Birthday,
           FavoriteMovies: response.data.FavoriteMovies,
         });
-        console.log(userData);
       })
       .catch(function (error) {
         console.log(error);
@@ -122,7 +121,7 @@ class MainView extends React.Component {
   }
 
   render() {
-    let { movies, user } = this.props;
+    let { movies, user, userData } = this.props;
     //let { user } = this.state;
     //const { movies, user } = this.state;
 
@@ -243,10 +242,16 @@ class MainView extends React.Component {
                 return (
                   <Col>
                     <ProfileView
-                      user={user}
+                      userData={userData}
                       onBackClick={() => history.goBack()}
                     />
                   </Col>
+                  /*<Col>
+                    <ProfileView
+                      user={user}
+                      onBackClick={() => history.goBack()}
+                    />
+                  </Col>*/
                 );
               }}
             />
@@ -278,7 +283,9 @@ class MainView extends React.Component {
 }
 
 let mapStateToProps = (state) => {
-  return { movies: state.movies, user: state.user };
+  return { movies: state.movies, user: state.user, userData: state.userData };
 };
 
-export default connect(mapStateToProps, { setMovies, setUser })(MainView);
+export default connect(mapStateToProps, { setMovies, setUser, setUserData })(
+  MainView
+);

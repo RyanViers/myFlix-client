@@ -59,7 +59,7 @@ class MainView extends React.Component {
       });
   }
 
-  getUser(token) {
+  /*getUser(token) {
     const username = localStorage.getItem('user');
     axios
       .get(`https://ryan-viers-movie-app.herokuapp.com/users/${username}`, {
@@ -71,7 +71,7 @@ class MainView extends React.Component {
       .catch(function (error) {
         console.log(error);
       });
-  }
+  }*/
 
   addFavoriteMovie(movie, user) {
     const token = localStorage.getItem('token');
@@ -102,7 +102,6 @@ class MainView extends React.Component {
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user.Username);
     this.getMovies(authData.token);
-    this.getUser(authData.token);
   }
 
   onLoggedOut() {

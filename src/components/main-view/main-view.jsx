@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import { setMovies, setUser, setUserData } from '../../actions/actions';
 import MoviesList from '../movies-list/movies-list';
 
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 
 import './main-view.scss';
 
@@ -61,6 +61,7 @@ class MainView extends React.Component {
 
   getUserData(token) {
     const username = localStorage.getItem('user');
+    console.log(username);
     axios
       .get(`https://ryan-viers-movie-app.herokuapp.com/users/${username}`, {
         headers: { Authorization: `Bearer ${token}` },
@@ -102,6 +103,7 @@ class MainView extends React.Component {
     console.log(authData);
     const { setUser } = this.props;
     setUser(authData.user.Username);
+
     /*this.setState({
       user: authData.user.Username,
     });*/

@@ -36,7 +36,6 @@ class MainView extends React.Component {
     if (accessToken !== null) {
       const { setUser } = this.props;
       setUser(localStorage.getItem('user'));
-      console.log(setUser);
       /*this.setState({
         user: localStorage.getItem('user'),
       });*/
@@ -60,19 +59,25 @@ class MainView extends React.Component {
       });
   }
 
-  /*getUser(token) {
+  getUserData(token) {
     const username = localStorage.getItem('user');
     axios
       .get(`https://ryan-viers-movie-app.herokuapp.com/users/${username}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        this.props.setUser(response.data);
+        setUserData({
+          Name: response.data.Name,
+          Email: response.data.Email,
+          Birthday: response.data.Birthday,
+          FavoriteMovies: response.data.FavoriteMovies,
+        });
+        console.log(userData);
       })
       .catch(function (error) {
         console.log(error);
       });
-  }*/
+  }
 
   addFavoriteMovie(movie, user) {
     const token = localStorage.getItem('token');
@@ -105,6 +110,7 @@ class MainView extends React.Component {
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user.Username);
     this.getMovies(authData.token);
+    this.getUserData(authData.token);
   }
 
   onLoggedOut() {

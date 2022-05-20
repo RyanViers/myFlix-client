@@ -24,10 +24,10 @@ function movies(state = [], action) {
   switch (action.type) {
     case SET_MOVIES:
       return action.value;
-    /*case ADD_FAVORITE:
+    case ADD_FAVORITE:
       return action.value;
     case REMOVE_FAVORITE:
-      return action.value;*/
+      return action.value;
     default:
       return state;
   }
@@ -42,20 +42,20 @@ function user(state = '', action) {
   }
 }
 
-/*function userData(state = '', action) {
+function userData(state = '', action) {
   switch (action.type) {
     case SET_USERDATA:
       return action.value;
     default:
       return state;
   }
-}*/
+}
 
 const moviesApp = combineReducers({
   visibilityFilter,
   movies,
-  //user,
-  //userData,
+  user,
+  userData,
 });
 /*function moviesApp(state = {}, action) {
   return {

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
-import { setMovies, setUser, setUserData } from '../../actions/actions';
+import { setMovies } from '../../actions/actions';
 import MoviesList from '../movies-list/movies-list';
 
 import { Container, Row, Col } from 'react-bootstrap';
@@ -17,7 +17,7 @@ import { LoginView } from '../login-view/login-view';
 import { MovieView } from '../movie-view/movie-view';
 import { NavbarView } from '../navbar-view/navbar';
 import { RegistrationView } from '../registration-view/registration-view';
-import ProfileView from '../profile-view/profile-view';
+import { ProfileView } from '../profile-view/profile-view';
 import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view';
 import { Redirect } from 'react-router-dom';
@@ -60,7 +60,7 @@ class MainView extends React.Component {
       });
   }
 
-  getUserData(token) {
+  /*getUserData(token) {
     const username = localStorage.getItem('user');
     console.log(username);
     axios
@@ -73,7 +73,7 @@ class MainView extends React.Component {
       .catch(function (error) {
         console.log(error);
       });
-  }
+  }*/
 
   addFavoriteMovie(movie, user) {
     const token = localStorage.getItem('token');
@@ -277,9 +277,7 @@ class MainView extends React.Component {
 }
 
 let mapStateToProps = (state) => {
-  return { movies: state.movies, user: state.user, userData: state.userData };
+  return { movies: state.movies };
 };
 
-export default connect(mapStateToProps, { setMovies, setUser, setUserData })(
-  MainView
-);
+export default connect(mapStateToProps, { setMovies })(MainView);

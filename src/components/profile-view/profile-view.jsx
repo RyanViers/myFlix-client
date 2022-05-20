@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { connect } from 'react-redux';
 import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './profile-view.scss';
@@ -9,7 +8,7 @@ import { UserData } from './user-data';
 import { FavoriteMovies } from './favorite-movies';
 import { UpdateUser } from './update-user';
 
-function ProfileView({ user, movies }) {
+export function ProfileView({ user, movies }) {
   const [userdata, setUserdata] = useState({});
   const [updatedUser, setUpdatedUser] = useState({});
   const [favoriteMoviesList, setFavoriteMoviesList] = useState([]);
@@ -48,7 +47,7 @@ function ProfileView({ user, movies }) {
     e.preventDefault();
     axios
       .put(
-        `https://ryan-viers-movie-app.herokuapp.com/users/${userdata.Username}`,
+        `https://ryan-viers-movie-app.herokuapp.com/users/${user}`,
         updatedUser
       )
       .then((response) => {
@@ -69,9 +68,7 @@ function ProfileView({ user, movies }) {
 
   const deleteProfile = (e) => {
     axios
-      .delete(
-        `https://ryan-viers-movie-app.herokuapp.com/users/${userdata.Username}`
-      )
+      .delete(`https://ryan-viers-movie-app.herokuapp.com/users/${user}`)
       .then((response) => {
         alert('Your profile has beeen deleted');
         localStorage.removeItem('user');
@@ -87,7 +84,7 @@ function ProfileView({ user, movies }) {
   const removeFav = (id) => {
     axios
       .delete(
-        `https://ryan-viers-movie-app.herokuapp.com/users/${userdata.Username}/movies/${id}`,
+        `https://ryan-viers-movie-app.herokuapp.com/users/${user}/movies/${id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -143,5 +140,3 @@ function ProfileView({ user, movies }) {
     </Container>
   );
 }
-
-export default ProfileView;

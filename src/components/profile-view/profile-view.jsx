@@ -8,7 +8,7 @@ import { UserData } from './user-data';
 import { FavoriteMovies } from './favorite-movies';
 import { UpdateUser } from './update-user';
 
-export function ProfileView({ user, movies }) {
+export function ProfileView({ user, movies, onBackClick }) {
   const [userdata, setUserdata] = useState({});
   const [updatedUser, setUpdatedUser] = useState({});
   const [favoriteMoviesList, setFavoriteMoviesList] = useState([]);
@@ -48,6 +48,7 @@ export function ProfileView({ user, movies }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const userToken = localStorage.getItem('token');
     axios
       .put(
         `https://ryan-viers-movie-app.herokuapp.com/users/${user}`,

@@ -31,6 +31,7 @@ export function ProfileView({ user, movies }) {
       })
       .catch((e) => {
         console.error(e);
+        console.log('here');
       });
   };
 

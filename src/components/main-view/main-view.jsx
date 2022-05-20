@@ -67,12 +67,7 @@ class MainView extends React.Component {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        this.props.setUserData({
-          Name: response.data.Name,
-          Email: response.data.Email,
-          Birthday: response.data.Birthday,
-          FavoriteMovies: response.data.FavoriteMovies,
-        });
+        this.props.setUserData(response.data);
       })
       .catch(function (error) {
         console.log(error);

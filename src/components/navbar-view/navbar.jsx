@@ -17,7 +17,7 @@ export function NavbarView({ user }) {
       return false;
     }
   };
-
+  console.log(user);
   return (
     <Navbar
       className="main-nav"

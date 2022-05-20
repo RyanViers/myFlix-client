@@ -34,11 +34,11 @@ class MainView extends React.Component {
   componentDidMount() {
     let accessToken = localStorage.getItem('token');
     if (accessToken !== null) {
-      const { setUser } = this.props;
-      setUser(localStorage.getItem('user'));
-      /*this.setState({
+      /*const { setUser } = this.props;
+      setUser(localStorage.getItem('user'));*/
+      this.setState({
         user: localStorage.getItem('user'),
-      });*/
+      });
       this.getMovies(accessToken);
       this.getUserData(accessToken);
     }
@@ -97,12 +97,12 @@ class MainView extends React.Component {
   /*When a user successfully logs in, this function updates the 'user' property in state to that 'particular user'.*/
   onLoggedIn(authData) {
     console.log(authData);
-    const { setUser } = this.props;
-    setUser(authData.user.Username);
+    /*const { setUser } = this.props;
+    setUser(authData.user.Username);*/
 
-    /*this.setState({
+    this.setState({
       user: authData.user.Username,
-    });*/
+    });
 
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user.Username);

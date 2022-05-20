@@ -10,9 +10,9 @@ import { UserData } from './user-data';
 import { FavoriteMovies } from './favorite-movies';
 import { UpdateUser } from './update-user';
 
-function ProfileView({ props }) {
+function ProfileView({ user, movies }) {
   const user = props;
-  /*const [userdata, setUserdata] = useState({});
+  const [userdata, setUserdata] = useState({});
   const [updatedUser, setUpdatedUser] = useState({});
   const [favoriteMoviesList, setFavoriteMoviesList] = useState([]);
 
@@ -43,7 +43,7 @@ function ProfileView({ props }) {
     } else {
       console.log('Not authorized');
     }
-  }, []);*/
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();

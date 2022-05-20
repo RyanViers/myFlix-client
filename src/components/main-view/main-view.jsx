@@ -121,7 +121,7 @@ class MainView extends React.Component {
     let { user } = this.state;
     //const { movies, user } = this.state;
     console.log(user);
-    console.log(userData);
+
     return (
       <Router>
         <Container>

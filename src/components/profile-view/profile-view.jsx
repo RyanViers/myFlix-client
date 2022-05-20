@@ -19,7 +19,7 @@ export function ProfileView({ user, movies }) {
   const getUserData = () => {
     const userToken = localStorage.getItem('token');
     axios
-      .get(`https://ryan-viers-movie-app.herokuapp.com/users/${username}`, {
+      .get(`https://ryan-viers-movie-app.herokuapp.com/users/${user}`, {
         headers: { Authorization: `Bearer ${userToken}` },
       })
       .then((response) => {

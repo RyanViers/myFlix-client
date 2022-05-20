@@ -13,15 +13,13 @@ export function ProfileView({ user, movies, onBackClick }) {
   const [updatedUser, setUpdatedUser] = useState({});
   const [favoriteMoviesList, setFavoriteMoviesList] = useState([]);
 
-  //let token = localStorage.getItem('token');
-  //axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  let token = localStorage.getItem('token');
+  axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
-  const getUserData = () => {
-    const userToken = localStorage.getItem('token');
-    const username = localStorage.getItem('user');
+  const getUserData = (token, username) => {
     axios
       .get(`https://ryan-viers-movie-app.herokuapp.com/users/${username}`, {
-        headers: { Authorization: `Bearer ${userToken}` },
+        headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
         setUserdata(response.data);
@@ -38,21 +36,19 @@ export function ProfileView({ user, movies, onBackClick }) {
   };
 
   useEffect(() => {
-    getUserData();
-    /*if (token !== null) {
+    if (token !== null) {
       getUserData(token, user);
       console.log(user);
     } else {
       console.log('Not authorized');
-    }*/
+    }
   }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const userToken = localStorage.getItem('token');
     axios
       .put(
-        `https://ryan-viers-movie-app.herokuapp.com/users/${user}`,
+        `https://ryan-viers-movie-app.herokuapp.com/users/${userdata.Username}`,
         updatedUser
       )
       .then((response) => {
@@ -73,7 +69,9 @@ export function ProfileView({ user, movies, onBackClick }) {
 
   const deleteProfile = (e) => {
     axios
-      .delete(`https://ryan-viers-movie-app.herokuapp.com/users/${user}`)
+      .delete(
+        `https://ryan-viers-movie-app.herokuapp.com/users/${userdata.Username}`
+      )
       .then((response) => {
         alert('Your profile has beeen deleted');
         localStorage.removeItem('user');

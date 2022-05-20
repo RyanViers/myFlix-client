@@ -76,7 +76,7 @@ class MainView extends React.Component {
 
   addFavoriteMovie(movie, user) {
     const token = localStorage.getItem('token');
-    console.log(user.Email);
+
     axios
       .post(
         `https://ryan-viers-movie-app.herokuapp.com/users/${user}/movies/${movie._id}`,

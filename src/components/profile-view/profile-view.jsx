@@ -13,13 +13,14 @@ export function ProfileView({ user, movies }) {
   const [updatedUser, setUpdatedUser] = useState({});
   const [favoriteMoviesList, setFavoriteMoviesList] = useState([]);
 
-  let token = localStorage.getItem('token');
-  axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  //let token = localStorage.getItem('token');
+  //axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
-  const getUserData = (token, username) => {
+  const getUserData = () => {
+    const userToken = localStorage.getItem('token');
     axios
       .get(`https://ryan-viers-movie-app.herokuapp.com/users/${username}`, {
-        headers: { Authorization: `Bearer ${token}` },
+        headers: { Authorization: `Bearer ${userToken}` },
       })
       .then((response) => {
         setUserdata(response.data);
@@ -36,12 +37,13 @@ export function ProfileView({ user, movies }) {
   };
 
   useEffect(() => {
-    if (token !== null) {
+    getUserData();
+    /*if (token !== null) {
       getUserData(token, user);
       console.log(user);
     } else {
       console.log('Not authorized');
-    }
+    }*/
   }, []);
 
   const handleSubmit = (e) => {

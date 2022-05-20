@@ -229,7 +229,7 @@ class MainView extends React.Component {
             />
             <Route
               path={`/users/${user}`}
-              render={({ history }) => {
+              render={() => {
                 if (!user)
                   return (
                     <Col>

@@ -37,8 +37,8 @@ function ProfileView({ user, movies }) {
 
   useEffect(() => {
     if (token !== null) {
-      getUserData(token, user.Username);
-      console.log(user.Username);
+      getUserData(token, user);
+      console.log(user);
     } else {
       console.log('Not authorized');
     }

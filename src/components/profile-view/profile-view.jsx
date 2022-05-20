@@ -44,7 +44,7 @@ function ProfileView({ user }) {
     }
   }, []);*/
 
-  /*const handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     axios
       .put(
@@ -70,7 +70,7 @@ function ProfileView({ user }) {
   const deleteProfile = (e) => {
     axios
       .delete(
-        `https://ryan-viers-movie-app.herokuapp.com/users/${userdata.Username}`
+        `https://ryan-viers-movie-app.herokuapp.com/users/${user.Username}`
       )
       .then((response) => {
         alert('Your profile has beeen deleted');
@@ -87,7 +87,7 @@ function ProfileView({ user }) {
   const removeFav = (id) => {
     axios
       .delete(
-        `https://ryan-viers-movie-app.herokuapp.com/users/${userdata.Username}/movies/${id}`,
+        `https://ryan-viers-movie-app.herokuapp.com/users/${user.Username}/movies/${id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -102,7 +102,7 @@ function ProfileView({ user }) {
         console.error(e);
         alert('Unable to delete movie.');
       });
-  };*/
+  };
 
   return (
     <Container>

@@ -10,7 +10,8 @@ import { UserData } from './user-data';
 import { FavoriteMovies } from './favorite-movies';
 import { UpdateUser } from './update-user';
 
-function ProfileView({ user }) {
+function ProfileView({ props }) {
+  const user = props;
   /*const [userdata, setUserdata] = useState({});
   const [updatedUser, setUpdatedUser] = useState({});
   const [favoriteMoviesList, setFavoriteMoviesList] = useState([]);

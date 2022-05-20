@@ -37,7 +37,8 @@ function ProfileView({ user, movies }) {
 
   useEffect(() => {
     if (token !== null) {
-      getUserData(token, user);
+      getUserData(token, user.Username);
+      console.log(user.Username);
     } else {
       console.log('Not authorized');
     }
@@ -47,7 +48,7 @@ function ProfileView({ user, movies }) {
     e.preventDefault();
     axios
       .put(
-        `https://ryan-viers-movie-app.herokuapp.com/users/${user.Username}`,
+        `https://ryan-viers-movie-app.herokuapp.com/users/${userdata.Username}`,
         updatedUser
       )
       .then((response) => {
@@ -69,7 +70,7 @@ function ProfileView({ user, movies }) {
   const deleteProfile = (e) => {
     axios
       .delete(
-        `https://ryan-viers-movie-app.herokuapp.com/users/${user.Username}`
+        `https://ryan-viers-movie-app.herokuapp.com/users/${userdata.Username}`
       )
       .then((response) => {
         alert('Your profile has beeen deleted');
@@ -86,7 +87,7 @@ function ProfileView({ user, movies }) {
   const removeFav = (id) => {
     axios
       .delete(
-        `https://ryan-viers-movie-app.herokuapp.com/users/${user.Username}/movies/${id}`,
+        `https://ryan-viers-movie-app.herokuapp.com/users/${userdata.Username}/movies/${id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -109,7 +110,7 @@ function ProfileView({ user, movies }) {
         <Col>
           <Card id="update-user-card">
             <Card.Body>
-              <UserData userdata={user} />
+              <UserData userdata={userdata} />
             </Card.Body>
           </Card>
 
@@ -122,7 +123,7 @@ function ProfileView({ user, movies }) {
           <Card id="update-user-card">
             <Card.Body>
               <UpdateUser
-                userdata={user}
+                userdata={userdata}
                 handleSubmit={handleSubmit}
                 handleUpdate={handleUpdate}
               />

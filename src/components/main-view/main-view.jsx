@@ -119,8 +119,8 @@ class MainView extends React.Component {
   }
 
   render() {
-    let { movies, user, userData } = this.props;
-    //let { user } = this.state;
+    let { movies, userData } = this.props;
+    let { user } = this.state;
     //const { movies, user } = this.state;
     console.log(userData);
     return (
@@ -229,7 +229,7 @@ class MainView extends React.Component {
             />
             <Route
               path={`/users/${user}`}
-              render={() => {
+              render={({ history }) => {
                 if (!user)
                   return (
                     <Col>
@@ -241,6 +241,7 @@ class MainView extends React.Component {
                   <Col>
                     <ProfileView
                       user={user}
+                      movies={movies}
                       onBackClick={() => history.goBack()}
                     />
                   </Col>

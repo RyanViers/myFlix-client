@@ -40,7 +40,6 @@ class MainView extends React.Component {
         user: localStorage.getItem('user'),
       });
       this.getMovies(accessToken);
-      this.getUserData(accessToken);
     }
   }
 
@@ -107,7 +106,6 @@ class MainView extends React.Component {
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user.Username);
     this.getMovies(authData.token);
-    this.getUserData(authData.token);
   }
 
   onLoggedOut() {
@@ -119,7 +117,7 @@ class MainView extends React.Component {
   }
 
   render() {
-    let { movies, userData } = this.props;
+    let { movies } = this.props;
     let { user } = this.state;
     //const { movies, user } = this.state;
     console.log(user);

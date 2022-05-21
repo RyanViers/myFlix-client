@@ -37,7 +37,7 @@ export function ProfileView({ user, movies, onBackClick }) {
 
   useEffect(() => {
     if (token !== null) {
-      getUserData(token);
+      getUserData(token, user);
     } else {
       console.log('Not authorized');
     }

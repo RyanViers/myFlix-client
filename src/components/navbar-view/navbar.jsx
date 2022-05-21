@@ -28,7 +28,7 @@ export function NavbarView({ user }) {
       expand="lg"
       variant="dark"
     >
-      <Container>
+      <Container fluid>
         <Navbar.Brand className="navbar-logo" href="/">
           myFlixCinema
         </Navbar.Brand>

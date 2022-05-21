@@ -113,7 +113,7 @@ export function ProfileView(props) {
         <Col>
           <Card id="update-user-card">
             <Card.Body>
-              <UserData user={user} />
+              <UserData userData={userData} />
             </Card.Body>
           </Card>
 
@@ -126,7 +126,7 @@ export function ProfileView(props) {
           <Card id="update-user-card">
             <Card.Body>
               <UpdateUser
-                user={user}
+                userData={userData}
                 handleSubmit={handleSubmit}
                 handleUpdate={handleUpdate}
               />
@@ -138,7 +138,7 @@ export function ProfileView(props) {
       <Card id="update-user-card">
         <Card.Body>
           <FavoriteMovies
-            favoriteMoviesList={favoriteMoviesList}
+            favoriteMoviesList={userData.FavoriteMovies}
             removeFav={removeFav}
           />
         </Card.Body>

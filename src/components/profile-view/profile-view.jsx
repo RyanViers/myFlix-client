@@ -10,7 +10,6 @@ import { FavoriteMovies } from './favorite-movies';
 import { UpdateUser } from './update-user';
 
 export function ProfileView({ user, movies, onBackClick }) {
-  const { user } = props;
   const favoriteMoviesList = user.FavoriteMovies;
   console.log(user);
   console.log(favoriteMoviesList);

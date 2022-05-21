@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-//import propTypes from 'prop-types';
+import propTypes from 'prop-types';
 import './profile-view.scss';
 
 import { UserData } from './user-data';
@@ -11,6 +11,7 @@ import { FavoriteMovies } from './favorite-movies';
 import { UpdateUser } from './update-user';
 
 export function ProfileView({ user }) {
+  let { user } = props;
   console.log(user);
   //const [userdata, setUserdata] = useState({});
   //const [updatedUser, setUpdatedUser] = useState({});
@@ -146,10 +147,10 @@ export function ProfileView({ user }) {
   );
 }
 
-/*ProfileView.propTypes = {
+ProfileView.propTypes = {
   user: propTypes.shape({
     Username: propTypes.string.isRequired,
     Email: propTypes.string.isRequired,
     FavoriteMovies: propTypes.array.isRequired,
   }).isRequired,
-};*/
+};

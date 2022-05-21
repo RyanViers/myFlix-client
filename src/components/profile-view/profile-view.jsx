@@ -11,7 +11,7 @@ import { FavoriteMovies } from './favorite-movies';
 import { UpdateUser } from './update-user';
 
 export function ProfileView(props) {
-  let { userData } = this.props;
+  let { userData } = props;
   console.log(userData);
   //const [userdata, setUserdata] = useState({});
   //const [updatedUser, setUpdatedUser] = useState({});
@@ -148,7 +148,7 @@ export function ProfileView(props) {
 }
 
 ProfileView.propTypes = {
-  user: propTypes.shape({
+  userData: propTypes.shape({
     Username: propTypes.string.isRequired,
     Email: propTypes.string.isRequired,
     FavoriteMovies: propTypes.array.isRequired,

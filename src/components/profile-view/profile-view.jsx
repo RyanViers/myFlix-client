@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import propTypes from 'prop-types';
 import './profile-view.scss';
 
 import { UserData } from './user-data';
@@ -146,3 +147,11 @@ export function ProfileView({ user, movies, onBackClick }) {
     </Container>
   );
 }
+
+ProfileView.propTypes = {
+  user: propTypes.shape({
+    Username: propTypes.string.isRequired,
+    Email: propTypes.string.isRequired,
+    FavoriteMovies: propTypes.array.isRequired,
+  }).isRequired,
+};

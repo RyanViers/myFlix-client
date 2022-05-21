@@ -121,10 +121,10 @@ class MainView extends React.Component {
     let { user } = this.state;
     //const { movies, user } = this.state;
     console.log(user);
-
+    console.log(userData);
     return (
       <Router>
-        <NavbarView user={userData} />
+        <NavbarView user={user} />
         <Container>
           <Row className="main-view justify-content-md-center">
             <Route

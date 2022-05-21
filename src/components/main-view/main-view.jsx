@@ -59,7 +59,7 @@ class MainView extends React.Component {
       });
   }
 
-  /*getUserData(token) {
+  getUserData(token) {
     const username = localStorage.getItem('user');
     console.log(username);
     axios
@@ -72,7 +72,7 @@ class MainView extends React.Component {
       .catch(function (error) {
         console.log(error);
       });
-  }*/
+  }
 
   addFavoriteMovie(movie, user) {
     const token = localStorage.getItem('token');
@@ -117,14 +117,14 @@ class MainView extends React.Component {
   }
 
   render() {
-    let { movies } = this.props;
+    let { movies, userData } = this.props;
     let { user } = this.state;
     //const { movies, user } = this.state;
     console.log(user);
 
     return (
       <Router>
-        <NavbarView user={user} />
+        <NavbarView user={userData} />
         <Container>
           <Row className="main-view justify-content-md-center">
             <Route

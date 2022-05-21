@@ -10,15 +10,18 @@ import { FavoriteMovies } from './favorite-movies';
 import { UpdateUser } from './update-user';
 
 export function ProfileView({ user, movies, onBackClick }) {
-  //const { user } = props;
-  const [userdata, setUserdata] = useState({});
-  const [updatedUser, setUpdatedUser] = useState({});
-  const [favoriteMoviesList, setFavoriteMoviesList] = useState([]);
+  const { user } = props;
+  const favoriteMoviesList = user.FavoriteMovies;
+  console.log(user);
+  console.log(favoriteMoviesList);
+  //const [userdata, setUserdata] = useState({});
+  //const [updatedUser, setUpdatedUser] = useState({});
+  //const [favoriteMoviesList, setFavoriteMoviesList] = useState([]);
 
   let token = localStorage.getItem('token');
   axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
-  const getUserData = (token, username) => {
+  /*const getUserData = (token, username) => {
     axios
       .get(`https://ryan-viers-movie-app.herokuapp.com/users/${username}`, {
         headers: { Authorization: `Bearer ${token}` },
@@ -43,13 +46,13 @@ export function ProfileView({ user, movies, onBackClick }) {
     } else {
       console.log('Not authorized');
     }
-  }, []);
+  }, []);*/
 
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
       .put(
-        `https://ryan-viers-movie-app.herokuapp.com/users/${userdata.Username}`,
+        `https://ryan-viers-movie-app.herokuapp.com/users/${user.Username}`,
         updatedUser
       )
       .then((response) => {
@@ -71,7 +74,7 @@ export function ProfileView({ user, movies, onBackClick }) {
   const deleteProfile = (e) => {
     axios
       .delete(
-        `https://ryan-viers-movie-app.herokuapp.com/users/${userdata.Username}`
+        `https://ryan-viers-movie-app.herokuapp.com/users/${user.Username}`
       )
       .then((response) => {
         alert('Your profile has beeen deleted');
@@ -88,7 +91,7 @@ export function ProfileView({ user, movies, onBackClick }) {
   const removeFav = (id) => {
     axios
       .delete(
-        `https://ryan-viers-movie-app.herokuapp.com/users/${userdata.Username}/movies/${id}`,
+        `https://ryan-viers-movie-app.herokuapp.com/users/${user.Username}/movies/${id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -111,7 +114,7 @@ export function ProfileView({ user, movies, onBackClick }) {
         <Col>
           <Card id="update-user-card">
             <Card.Body>
-              <UserData userdata={userdata} />
+              <UserData user={user} />
             </Card.Body>
           </Card>
 
@@ -124,7 +127,7 @@ export function ProfileView({ user, movies, onBackClick }) {
           <Card id="update-user-card">
             <Card.Body>
               <UpdateUser
-                userdata={userdata}
+                user={user}
                 handleSubmit={handleSubmit}
                 handleUpdate={handleUpdate}
               />

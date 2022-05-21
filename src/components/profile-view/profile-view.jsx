@@ -10,7 +10,7 @@ import { UserData } from './user-data';
 import { FavoriteMovies } from './favorite-movies';
 import { UpdateUser } from './update-user';
 
-export function ProfileView(props) {
+export function ProfileView({ user }) {
   console.log(user);
   //const [userdata, setUserdata] = useState({});
   //const [updatedUser, setUpdatedUser] = useState({});

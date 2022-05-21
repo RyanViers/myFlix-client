@@ -8,11 +8,12 @@ export function NavbarView({ user }) {
   };
 
   const isAuth = () => {
+    let accessToken = localStorage.getItem('token');
     if (typeof window == 'undefined') {
       return false;
     }
-    if (localStorage.getItem('token')) {
-      return localStorage.getItem('token');
+    if (accessToken) {
+      return accessToken;
     } else {
       return false;
     }

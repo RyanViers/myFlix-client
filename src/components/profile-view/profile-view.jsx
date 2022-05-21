@@ -11,9 +11,9 @@ import { FavoriteMovies } from './favorite-movies';
 import { UpdateUser } from './update-user';
 
 export function ProfileView({ user, movies, onBackClick }) {
-  const favoriteMoviesList = user.FavoriteMovies;
+  const { user } = this.props;
   console.log(user);
-  console.log(favoriteMoviesList);
+  console.log(user.FavoriteMovies);
   //const [userdata, setUserdata] = useState({});
   //const [updatedUser, setUpdatedUser] = useState({});
   //const [favoriteMoviesList, setFavoriteMoviesList] = useState([]);

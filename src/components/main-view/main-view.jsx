@@ -124,7 +124,7 @@ class MainView extends React.Component {
     console.log(userData);
     return (
       <Router>
-        <Container>
+        <Container fluid>
           <NavbarView user={user} />
           <Row className="main-view justify-content-md-center">
             <Route

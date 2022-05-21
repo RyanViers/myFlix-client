@@ -37,8 +37,7 @@ export function ProfileView({ user, movies, onBackClick }) {
 
   useEffect(() => {
     if (token !== null) {
-      getUserData(token, user);
-      console.log(user);
+      getUserData(token);
     } else {
       console.log('Not authorized');
     }
@@ -87,7 +86,7 @@ export function ProfileView({ user, movies, onBackClick }) {
   const removeFav = (id) => {
     axios
       .delete(
-        `https://ryan-viers-movie-app.herokuapp.com/users/${user}/movies/${id}`,
+        `https://ryan-viers-movie-app.herokuapp.com/users/${userdata.Username}/movies/${id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

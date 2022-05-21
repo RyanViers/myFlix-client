@@ -33,7 +33,7 @@ export function NavbarView({ user }) {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ml-auto">
-            {isAuth() && <Nav.Link href={`/users/${user}`}>{user}</Nav.Link>}
+            {isAuth() && <Nav.Link href={`/users/${user}`}>${user}</Nav.Link>}
             {isAuth() && (
               <Button
                 variant="link"

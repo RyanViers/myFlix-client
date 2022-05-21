@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Col, Row, Card } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 
 export function UserData({ userdata }) {
   return (

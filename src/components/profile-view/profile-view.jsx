@@ -113,7 +113,7 @@ export function ProfileView(props) {
         <Col>
           <Card id="update-user-card">
             <Card.Body>
-              <UserData userData={userData} />
+              <UserData userdata={userData} />
             </Card.Body>
           </Card>
 
@@ -126,7 +126,7 @@ export function ProfileView(props) {
           <Card id="update-user-card">
             <Card.Body>
               <UpdateUser
-                userData={userData}
+                userdata={userData}
                 handleSubmit={handleSubmit}
                 handleUpdate={handleUpdate}
               />

@@ -12,7 +12,7 @@ import { UpdateUser } from './update-user';
 
 export function ProfileView({ user }) {
   console.log(user);
-  console.log(user.FavoriteMovies);
+  console.log(props.user.FavoriteMovies);
   //const [userdata, setUserdata] = useState({});
   //const [updatedUser, setUpdatedUser] = useState({});
   //const [favoriteMoviesList, setFavoriteMoviesList] = useState([]);

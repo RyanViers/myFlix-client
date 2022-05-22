@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+//import { setUserData } from '../../actions/actions';
 import propTypes from 'prop-types';
 import './profile-view.scss';
 
@@ -11,10 +12,11 @@ import { FavoriteMovies } from './favorite-movies';
 import { UpdateUser } from './update-user';
 
 export function ProfileView(props) {
-  const [userData, setUserData] = useState(props.userData);
-  const currentUser = props.userData;
+  const [currentUser, setCurrentUser] = useState(props.userData);
+  const [updatedUserData, setUpdatedUser] = useState(props.userData);
+
   //let { userData } = props;
-  console.log(userData);
+  console.log(currentUser);
   //const [userdata, setUserdata] = useState({});
   //const [updatedUser, setUpdatedUser] = useState({});
   //const [favoriteMoviesList, setFavoriteMoviesList] = useState([]);
@@ -54,10 +56,10 @@ export function ProfileView(props) {
     axios
       .put(
         `https://ryan-viers-movie-app.herokuapp.com/users/${currentUser.Username}`,
-        userData
+        updatedUserData
       )
       .then((response) => {
-        setUserData(response.data);
+        setUpdatedUser(response.data);
         alert('Profile updated');
         localStorage.removeItem('token');
         localStorage.removeItem('user');
@@ -71,7 +73,7 @@ export function ProfileView(props) {
 
   const handleUpdate = (e) => {
     setUserData({
-      ...userData,
+      ...updatedUserData,
       [e.target.name]: e.target.value,
     });
   };
@@ -79,7 +81,7 @@ export function ProfileView(props) {
   const deleteProfile = (e) => {
     axios
       .delete(
-        `https://ryan-viers-movie-app.herokuapp.com/users/${userData.Username}`
+        `https://ryan-viers-movie-app.herokuapp.com/users/${currentUser.Username}`
       )
       .then((response) => {
         alert('Your profile has beeen deleted');
@@ -96,15 +98,15 @@ export function ProfileView(props) {
   const removeFav = (id) => {
     axios
       .delete(
-        `https://ryan-viers-movie-app.herokuapp.com/users/${userData.Username}/movies/${id}`,
+        `https://ryan-viers-movie-app.herokuapp.com/users/${currentUser.Username}/movies/${id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
       )
       .then(() => {
-        setUserData(
-          ...userData.FavoriteMovies,
-          userData.FavoriteMovies.filter((movie) => movie._id != id)
+        setCurrentUser(
+          ...currentUser,
+          currentUser.FavoriteMovies.filter((movie) => movie._id != id)
         );
       })
       .catch((e) => {
@@ -132,7 +134,7 @@ export function ProfileView(props) {
           <Card id="update-user-card">
             <Card.Body>
               <UpdateUser
-                userdata={userData}
+                userdata={currentUser}
                 handleSubmit={handleSubmit}
                 handleUpdate={handleUpdate}
               />
@@ -144,7 +146,7 @@ export function ProfileView(props) {
       <Card id="update-user-card">
         <Card.Body>
           <FavoriteMovies
-            favoriteMoviesList={userData.FavoriteMovies}
+            favoriteMoviesList={currentUser.FavoriteMovies}
             removeFav={removeFav}
           />
         </Card.Body>

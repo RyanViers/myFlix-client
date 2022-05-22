@@ -62,6 +62,8 @@ export function ProfileView(props) {
       })
       .catch((e) => {
         console.log(e);
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
       });
   };
 

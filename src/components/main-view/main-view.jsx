@@ -81,7 +81,7 @@ class MainView extends React.Component {
       (m) => m._id === movie._id
     );
     console.log(addedMovie);
-    if ((addedMovie = [])) {
+    if (addedMovie == []) {
       axios
         .post(
           `https://ryan-viers-movie-app.herokuapp.com/users/${user}/movies/${movie._id}`,

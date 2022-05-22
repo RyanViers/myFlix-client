@@ -7,8 +7,7 @@ import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 
 export class MovieView extends React.Component {
   render() {
-    const { user, movie, onBackClick, addFavoriteMovie } = this.props;
-    const userData = props.userData;
+    const { user, userData, movie, onBackClick, addFavoriteMovie } = this.props;
 
     return (
       <Container>

@@ -53,7 +53,7 @@ export function ProfileView(props) {
     e.preventDefault();
     axios
       .put(
-        `https://ryan-viers-movie-app.herokuapp.com/users/${currentUsername}`,
+        `https://ryan-viers-movie-app.herokuapp.com/users/${currentUser.Username}`,
         userData
       )
       .then((response) => {

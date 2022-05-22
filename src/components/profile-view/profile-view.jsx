@@ -12,7 +12,7 @@ import { UpdateUser } from './update-user';
 
 export function ProfileView(props) {
   const [userData, setUserData] = useState(props.userData);
-  const currentUsername = props.userData.Username;
+  const currentUser = props.userData;
   //let { userData } = props;
   console.log(userData);
   //const [userdata, setUserdata] = useState({});
@@ -115,7 +115,7 @@ export function ProfileView(props) {
         <Col>
           <Card id="update-user-card">
             <Card.Body>
-              <UserData userdata={userData} />
+              <UserData userdata={currentUser} />
             </Card.Body>
           </Card>
 

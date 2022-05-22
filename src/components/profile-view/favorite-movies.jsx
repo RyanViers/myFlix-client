@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Col, Row, Card, Button, Figure } from 'react-bootstrap';
 import './profile-view.scss';
 
-export function FavoriteMovies({ favoriteMoviesList, removeFav }) {
+export function FavoriteMoviesView({ favoriteMoviesList, removeFav }) {
   return (
     <Card id="favorite-movies-card">
       <Card.Body>

@@ -3,18 +3,20 @@ import axios from 'axios';
 import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-//import { setUserData } from '../../actions/actions';
+import { setUser, setUserData } from '../../actions/actions';
 import propTypes from 'prop-types';
 import './profile-view.scss';
 
 import { UserData } from './user-data';
-import { FavoriteMovies } from './favorite-movies';
+import { FavoriteMoviesView } from './favorite-movies';
 import { UpdateUser } from './update-user';
 
 export function ProfileView(props) {
   const [currentUser, setCurrentUser] = useState(props.userData);
   const [updatedUserData, setUpdatedUser] = useState(props.userData);
-
+  const [favoriteMoviesList, setFavoriteMoviesList] = useState([
+    ...props.movies.filter((m) => props.user.FavoriteMovies.includes(m._id)),
+  ]);
   //let { userData } = props;
   console.log(currentUser);
   //const [userdata, setUserdata] = useState({});
@@ -59,8 +61,9 @@ export function ProfileView(props) {
         updatedUserData
       )
       .then((response) => {
-        setUpdatedUser(response.data);
+        setCurrentUser(response.data);
         alert('Profile updated');
+        props.setUserData(null);
         localStorage.removeItem('token');
         localStorage.removeItem('user');
 
@@ -104,9 +107,8 @@ export function ProfileView(props) {
         }
       )
       .then(() => {
-        setCurrentUser(
-          ...currentUser,
-          currentUser.FavoriteMovies.filter((movie) => movie._id != id)
+        setFavoriteMoviesList(
+          favoriteMoviesList.filter((movie) => movie._id != id)
         );
       })
       .catch((e) => {
@@ -145,8 +147,8 @@ export function ProfileView(props) {
 
       <Card id="update-user-card">
         <Card.Body>
-          <FavoriteMovies
-            favoriteMoviesList={currentUser.FavoriteMovies}
+          <FavoriteMoviesView
+            favoriteMoviesList={favoriteMoviesList}
             removeFav={removeFav}
           />
         </Card.Body>

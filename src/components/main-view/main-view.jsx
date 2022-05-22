@@ -77,21 +77,27 @@ class MainView extends React.Component {
 
   addFavoriteMovie(movie, user) {
     const token = localStorage.getItem('token');
-
-    axios
-      .post(
-        `https://ryan-viers-movie-app.herokuapp.com/users/${user}/movies/${movie._id}`,
-        {
-          FavoriteMovies: movie._id,
-        },
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      )
-      .catch((e) => {
-        console.error(e);
-        alert('Unable to add movie to list.');
-      });
+    const addedMovie = userData.FavoriteMovies.filter(
+      (m) => m._id == movie._id
+    );
+    if (!addedMovie) {
+      axios
+        .post(
+          `https://ryan-viers-movie-app.herokuapp.com/users/${user}/movies/${movie._id}`,
+          {
+            FavoriteMovies: movie._id,
+          },
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        )
+        .catch((e) => {
+          console.error(e);
+          alert('Unable to add movie to list.');
+        });
+    } else {
+      alert('Movie is already a favorite.');
+    }
   }
 
   /*When a user successfully logs in, this function updates the 'user' property in state to that 'particular user'.*/

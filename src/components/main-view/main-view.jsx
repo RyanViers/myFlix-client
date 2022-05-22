@@ -77,7 +77,7 @@ class MainView extends React.Component {
 
   addFavoriteMovie(movie, user) {
     const token = localStorage.getItem('token');
-    const addedMovie = userData.FavoriteMovies.filter(
+    const addedMovie = props.userData.FavoriteMovies.filter(
       (m) => m._id == movie._id
     );
     if (!addedMovie) {

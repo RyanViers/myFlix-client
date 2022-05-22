@@ -61,6 +61,8 @@ export function ProfileView(props) {
         alert('Profile updated');
         localStorage.removeItem('token');
         localStorage.removeItem('user');
+
+        window.open('/', '_self');
       })
       .catch((e) => {
         console.log(e);

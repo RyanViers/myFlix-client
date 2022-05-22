@@ -72,7 +72,7 @@ export function ProfileView(props) {
   };
 
   const handleUpdate = (e) => {
-    setUserData({
+    setUpdatedUser({
       ...updatedUserData,
       [e.target.name]: e.target.value,
     });

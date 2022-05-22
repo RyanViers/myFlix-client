@@ -11,7 +11,9 @@ import { FavoriteMovies } from './favorite-movies';
 import { UpdateUser } from './update-user';
 
 export function ProfileView(props) {
-  let { userData } = props;
+  const [userData, setUserData] = useState(props.userData);
+  const currentUsername = props.userData.Username;
+  //let { userData } = props;
   console.log(userData);
   //const [userdata, setUserdata] = useState({});
   //const [updatedUser, setUpdatedUser] = useState({});
@@ -51,11 +53,11 @@ export function ProfileView(props) {
     e.preventDefault();
     axios
       .put(
-        `https://ryan-viers-movie-app.herokuapp.com/users/${user.Username}`,
-        updatedUser
+        `https://ryan-viers-movie-app.herokuapp.com/users/${currentUsername}`,
+        userData
       )
       .then((response) => {
-        setUserdata(response.data);
+        setUserData(response.data);
         alert('Profile updated');
       })
       .catch((e) => {
@@ -64,8 +66,8 @@ export function ProfileView(props) {
   };
 
   const handleUpdate = (e) => {
-    setUpdatedUser({
-      ...updatedUser,
+    setUserData({
+      ...userData,
       [e.target.name]: e.target.value,
     });
   };
@@ -73,7 +75,7 @@ export function ProfileView(props) {
   const deleteProfile = (e) => {
     axios
       .delete(
-        `https://ryan-viers-movie-app.herokuapp.com/users/${user.Username}`
+        `https://ryan-viers-movie-app.herokuapp.com/users/${userData.Username}`
       )
       .then((response) => {
         alert('Your profile has beeen deleted');
@@ -90,15 +92,15 @@ export function ProfileView(props) {
   const removeFav = (id) => {
     axios
       .delete(
-        `https://ryan-viers-movie-app.herokuapp.com/users/${user.Username}/movies/${id}`,
+        `https://ryan-viers-movie-app.herokuapp.com/users/${userData.Username}/movies/${id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
       )
       .then(() => {
-        setFavoriteMoviesList(
-          favoriteMoviesList.filter((movie) => movie._id != id),
-          console.log(favoriteMoviesList)
+        setUserData(
+          ...userData.FavoriteMovies,
+          userData.FavoriteMovies.filter((movie) => movie._id != id)
         );
       })
       .catch((e) => {

@@ -21,6 +21,7 @@ export function ProfileView(props) {
   ]);
   //let { userData } = props;
   console.log(currentUser);
+  console.log(favoriteMoviesList);
   //const [userdata, setUserdata] = useState({});
   //const [updatedUser, setUpdatedUser] = useState({});
   //const [favoriteMoviesList, setFavoriteMoviesList] = useState([]);

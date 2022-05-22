@@ -77,11 +77,11 @@ class MainView extends React.Component {
 
   addFavoriteMovie(movie, user, userData) {
     const token = localStorage.getItem('token');
-    const addedMovie = userData.FavoriteMovies.filter(
-      (m) => m._id === movie._id
+    const addedMovie = userData.FavoriteMovies.filter((m) =>
+      userData.FavoriteMovies.includes(m._id)
     );
     console.log(addedMovie);
-    if (addedMovie == []) {
+    if (addedMovie._id != movie._id) {
       axios
         .post(
           `https://ryan-viers-movie-app.herokuapp.com/users/${user}/movies/${movie._id}`,

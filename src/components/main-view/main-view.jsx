@@ -80,6 +80,7 @@ class MainView extends React.Component {
     const addedMovie = userData.FavoriteMovies.filter(
       (m) => m._id === movie._id
     );
+    console.log(addedMovie);
     if (!addedMovie) {
       axios
         .post(

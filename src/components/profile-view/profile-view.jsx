@@ -59,11 +59,11 @@ export function ProfileView(props) {
       .then((response) => {
         setUserData(response.data);
         alert('Profile updated');
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
       })
       .catch((e) => {
         console.log(e);
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
       });
   };
 

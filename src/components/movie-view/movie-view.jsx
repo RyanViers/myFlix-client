@@ -8,7 +8,8 @@ import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 export class MovieView extends React.Component {
   render() {
     const { user, movie, onBackClick, addFavoriteMovie } = this.props;
-    console.log(props.userData);
+    const userData = props.userData;
+
     return (
       <Container>
         <Row>
@@ -46,7 +47,7 @@ export class MovieView extends React.Component {
                   variant="secondary"
                   id="movie-view-button"
                   onClick={() => {
-                    addFavoriteMovie(movie, user);
+                    addFavoriteMovie(movie, user, userData);
                     alert('Added to Favorites');
                   }}
                 >

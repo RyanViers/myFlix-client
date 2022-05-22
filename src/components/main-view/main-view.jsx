@@ -75,9 +75,9 @@ class MainView extends React.Component {
       });
   }
 
-  addFavoriteMovie(movie, user) {
+  addFavoriteMovie(movie, user, userData) {
     const token = localStorage.getItem('token');
-    const addedMovie = props.userData.FavoriteMovies.filter(
+    const addedMovie = userData.FavoriteMovies.filter(
       (m) => m._id == movie._id
     );
     if (!addedMovie) {
@@ -179,6 +179,7 @@ class MainView extends React.Component {
                   <Col md={8}>
                     <MovieView
                       user={user}
+                      userData={userData}
                       addFavoriteMovie={this.addFavoriteMovie}
                       movie={movies.find((m) => m._id === match.params.movieId)}
                       onBackClick={() => history.goBack()}

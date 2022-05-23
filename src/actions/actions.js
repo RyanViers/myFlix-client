@@ -19,7 +19,7 @@ export function setUserData(value) {
 }
 
 export function setFavorite(value) {
-  return { type: ADD_FAVORITE, value };
+  return { type: SET_FAVORITE, value };
 }
 
 export function setFilter(value) {

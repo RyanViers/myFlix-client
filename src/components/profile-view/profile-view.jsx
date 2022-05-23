@@ -167,4 +167,6 @@ let mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(ProfileView);
+export default connect(mapStateToProps, { setUserData, setFavorite })(
+  ProfileView
+);

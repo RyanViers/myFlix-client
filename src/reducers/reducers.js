@@ -6,8 +6,7 @@ import {
   SET_MOVIES,
   SET_USER,
   SET_USERDATA,
-  ADD_FAVORITE,
-  REMOVE_FAVORITE,
+  SET_FAVORITE,
   SET_FILTER,
 } from '../actions/actions';
 
@@ -24,9 +23,14 @@ function movies(state = [], action) {
   switch (action.type) {
     case SET_MOVIES:
       return action.value;
-    case ADD_FAVORITE:
-      return action.value;
-    case REMOVE_FAVORITE:
+    default:
+      return state;
+  }
+}
+
+function favoriteMovies(state = [], action) {
+  switch (action.type) {
+    case SET_FAVORITE:
       return action.value;
     default:
       return state;
@@ -56,6 +60,7 @@ const moviesApp = combineReducers({
   movies,
   user,
   userData,
+  favoriteMovies,
 });
 /*function moviesApp(state = {}, action) {
   return {

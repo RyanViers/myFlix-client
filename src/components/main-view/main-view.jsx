@@ -5,7 +5,12 @@ import { connect } from 'react-redux';
 
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
-import { setMovies, setUser, setUserData } from '../../actions/actions';
+import {
+  setMovies,
+  setUser,
+  setUserData,
+  setFavorite,
+} from '../../actions/actions';
 import MoviesList from '../movies-list/movies-list';
 
 import { Container, Row, Col } from 'react-bootstrap';
@@ -69,6 +74,7 @@ class MainView extends React.Component {
       })
       .then((response) => {
         this.props.setUserData(response.data);
+        this.props.setFavorite(response.data.FavoriteMovies);
       })
       .catch(function (error) {
         console.log(error);
@@ -126,7 +132,7 @@ class MainView extends React.Component {
   }
 
   render() {
-    let { movies, userData } = this.props;
+    let { movies, userData, favoriteMovies } = this.props;
     let { user } = this.state;
     //const { movies, user } = this.state;
     console.log(user);
@@ -246,7 +252,13 @@ class MainView extends React.Component {
                     </Col>
                   );
                 if (movies.length === 0) return <div className="main-view" />;
-                return <ProfileView userData={userData} movies={movies} />;
+                return (
+                  <ProfileView
+                    userData={userData}
+                    movies={movies}
+                    favoriteMovies={favoriteMovies}
+                  />
+                );
               }}
             />
             <Route
@@ -277,9 +289,17 @@ class MainView extends React.Component {
 }
 
 let mapStateToProps = (state) => {
-  return { movies: state.movies, user: state.user, userData: state.userData };
+  return {
+    movies: state.movies,
+    user: state.user,
+    userData: state.userData,
+    favoriteMovies: state.favoriteMovies,
+  };
 };
 
-export default connect(mapStateToProps, { setMovies, setUser, setUserData })(
-  MainView
-);
+export default connect(mapStateToProps, {
+  setMovies,
+  setUser,
+  setUserData,
+  setFavorite,
+})(MainView);

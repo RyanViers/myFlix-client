@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { setMovies, setUserData } from '../../actions/actions';
+import { setMovies, setUserData, setFavorite } from '../../actions/actions';
 import propTypes from 'prop-types';
 import './profile-view.scss';
 
@@ -12,15 +12,15 @@ import { FavoriteMoviesView } from './favorite-movies';
 import { UpdateUser } from './update-user';
 
 function ProfileView(props) {
-  let { userData, movies } = props;
-  const [currentUser, setCurrentUser] = useState(props.userData);
-  const [updatedUserData, setUpdatedUser] = useState(props.userData);
-  const [favoriteMoviesList, setFavoriteMoviesList] = useState([
+  let { userData, movies, favoriteMovies } = props;
+  //const [currentUser, setCurrentUser] = useState(props.userData);
+  const [updatedUserData, setUpdatedUser] = useState({});
+  /*const [favoriteMoviesList, setFavoriteMoviesList] = useState([
     ...props.movies.filter((m) => props.userData.FavoriteMovies.includes(m.id)),
-  ]);
+  ]);*/
   //let { userData } = props;
-  console.log(currentUser);
-  console.log(favoriteMoviesList);
+  //console.log(currentUser);
+  //console.log(favoriteMoviesList);
   //const [userdata, setUserdata] = useState({});
   //const [updatedUser, setUpdatedUser] = useState({});
   //const [favoriteMoviesList, setFavoriteMoviesList] = useState([]);
@@ -59,13 +59,12 @@ function ProfileView(props) {
     e.preventDefault();
     axios
       .put(
-        `https://ryan-viers-movie-app.herokuapp.com/users/${currentUser.Username}`,
+        `https://ryan-viers-movie-app.herokuapp.com/users/${userData.Username}`,
         updatedUserData
       )
       .then((response) => {
-        setCurrentUser(response.data);
         alert('Profile updated');
-        props.setUserData(null);
+        setUserData(null);
         localStorage.removeItem('token');
         localStorage.removeItem('user');
 
@@ -86,10 +85,11 @@ function ProfileView(props) {
   const deleteProfile = (e) => {
     axios
       .delete(
-        `https://ryan-viers-movie-app.herokuapp.com/users/${currentUser.Username}`
+        `https://ryan-viers-movie-app.herokuapp.com/users/${userData.Username}`
       )
       .then((response) => {
         alert('Your profile has beeen deleted');
+        setUserData(null);
         localStorage.removeItem('user');
         localStorage.removeItem('token');
 
@@ -103,17 +103,15 @@ function ProfileView(props) {
   const removeFav = (id) => {
     axios
       .delete(
-        `https://ryan-viers-movie-app.herokuapp.com/users/${currentUser.Username}/movies/${id}`,
+        `https://ryan-viers-movie-app.herokuapp.com/users/${userData.Username}/movies/${id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
       )
       .then(() => {
-        const newFavorites = favoriteMoviesList.filter(
-          (movie) => movie._id != id
-        );
+        const newFavorites = favoriteMovies.filter((movie) => movie._id != id);
 
-        setFavoriteMoviesList(newFavorites);
+        setFavorite(newFavorites);
       })
       .catch((e) => {
         console.error(e);
@@ -127,7 +125,7 @@ function ProfileView(props) {
         <Col>
           <Card id="update-user-card">
             <Card.Body>
-              <UserData userdata={currentUser} />
+              <UserData userdata={userData} />
             </Card.Body>
           </Card>
 
@@ -140,7 +138,7 @@ function ProfileView(props) {
           <Card id="update-user-card">
             <Card.Body>
               <UpdateUser
-                userdata={currentUser}
+                userdata={userData}
                 handleSubmit={handleSubmit}
                 handleUpdate={handleUpdate}
               />
@@ -152,7 +150,7 @@ function ProfileView(props) {
       <Card id="update-user-card">
         <Card.Body>
           <FavoriteMoviesView
-            favoriteMoviesList={favoriteMoviesList}
+            favoriteMoviesList={favoriteMovies}
             removeFav={removeFav}
           />
         </Card.Body>
@@ -162,7 +160,11 @@ function ProfileView(props) {
 }
 
 let mapStateToProps = (state) => {
-  return { movies: state.movies, userData: state.userData };
+  return {
+    movies: state.movies,
+    userData: state.userData,
+    favoriteMovies: state.favoriteMovies,
+  };
 };
 
 export default connect(mapStateToProps)(ProfileView);

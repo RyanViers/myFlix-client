@@ -81,32 +81,6 @@ class MainView extends React.Component {
       });
   }
 
-  addFavoriteMovie(movie, user, userData) {
-    const token = localStorage.getItem('token');
-    const addedMovie = userData.FavoriteMovies.filter((m) =>
-      userData.FavoriteMovies.includes(m._id)
-    );
-    console.log(addedMovie);
-    if (addedMovie._id != movie._id) {
-      axios
-        .post(
-          `https://ryan-viers-movie-app.herokuapp.com/users/${user}/movies/${movie._id}`,
-          {
-            FavoriteMovies: movie._id,
-          },
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          }
-        )
-        .catch((e) => {
-          console.error(e);
-          alert('Unable to add movie to list.');
-        });
-    } else {
-      alert('Movie is already a favorite.');
-    }
-  }
-
   /*When a user successfully logs in, this function updates the 'user' property in state to that 'particular user'.*/
   onLoggedIn(authData) {
     console.log(authData);
@@ -187,7 +161,6 @@ class MainView extends React.Component {
                     <MovieView
                       user={user}
                       userData={userData}
-                      addFavoriteMovie={this.addFavoriteMovie}
                       movie={movies.find((m) => m._id === match.params.movieId)}
                       onBackClick={() => history.goBack()}
                     />

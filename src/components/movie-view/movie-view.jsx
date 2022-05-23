@@ -1,5 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './movie-view.scss';
 
@@ -7,7 +8,34 @@ import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 
 export class MovieView extends React.Component {
   render() {
-    const { user, userData, movie, onBackClick, addFavoriteMovie } = this.props;
+    const { user, userData, movie, onBackClick } = this.props;
+
+    addFavoriteMovie = (movie, userData) => {
+      const token = localStorage.getItem('token');
+      const addedMovie = userData.FavoriteMovies.filter((m) =>
+        movie._id.includes(m._id)
+      );
+      console.log(addedMovie);
+      if (addedMovie.length > 0) {
+        alert('Movie is already a favorite.');
+        return;
+      } else {
+        axios
+          .post(
+            `https://ryan-viers-movie-app.herokuapp.com/users/${user}/movies/${movie._id}`,
+            {
+              FavoriteMovies: movie._id,
+            },
+            {
+              headers: { Authorization: `Bearer ${token}` },
+            }
+          )
+          .catch((e) => {
+            console.error(e);
+            alert('Unable to add movie to list.');
+          });
+      }
+    };
 
     return (
       <Container>
@@ -46,7 +74,7 @@ export class MovieView extends React.Component {
                   variant="secondary"
                   id="movie-view-button"
                   onClick={() => {
-                    addFavoriteMovie(movie, user, userData);
+                    addFavoriteMovie(movie, userData);
                     alert('Added to Favorites');
                   }}
                 >

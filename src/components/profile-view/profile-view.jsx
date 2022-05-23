@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { setUser, setUserData } from '../../actions/actions';
+import { setMovies, setUserData } from '../../actions/actions';
 import propTypes from 'prop-types';
 import './profile-view.scss';
 
@@ -12,11 +12,12 @@ import { FavoriteMoviesView } from './favorite-movies';
 import { UpdateUser } from './update-user';
 
 export function ProfileView(props) {
+  let { userData, movies } = props;
   const [currentUser, setCurrentUser] = useState(props.userData);
   const [updatedUserData, setUpdatedUser] = useState(props.userData);
-  const [favoriteMoviesList, setFavoriteMoviesList] = useState(
-    props.userData.FavoriteMovies
-  );
+  const [favoriteMoviesList, setFavoriteMoviesList] = useState([
+    ...props.movies.filter((m) => props.user.FavoriteMovies.includes(m.id)),
+  ]);
   //let { userData } = props;
   console.log(currentUser);
   console.log(favoriteMoviesList);
@@ -111,11 +112,8 @@ export function ProfileView(props) {
         const newFavorites = favoriteMoviesList.filter(
           (movie) => movie._id != id
         );
-        currentUser.FavoriteMovies = currentUser.FavoriteMovies.filter(
-          (movie) => movie._id !== id
-        );
+
         setFavoriteMoviesList(newFavorites);
-        props.setUserData(currentUser);
       })
       .catch((e) => {
         console.error(e);
@@ -163,10 +161,8 @@ export function ProfileView(props) {
   );
 }
 
-ProfileView.propTypes = {
-  userData: propTypes.shape({
-    Username: propTypes.string.isRequired,
-    Email: propTypes.string.isRequired,
-    FavoriteMovies: propTypes.array.isRequired,
-  }).isRequired,
+let mapStateToProps = (state) => {
+  return { movies: state.movies, userData: state.userData };
 };
+
+export default connect(mapStateToProps, { setMovies, setUserData })(MainView);

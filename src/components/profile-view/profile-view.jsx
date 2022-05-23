@@ -15,9 +15,9 @@ function ProfileView(props) {
   let { userData, movies, favoriteMovies } = props;
   //const [currentUser, setCurrentUser] = useState(props.userData);
   const [updatedUserData, setUpdatedUser] = useState({});
-  /*const [favoriteMoviesList, setFavoriteMoviesList] = useState([
-    ...props.movies.filter((m) => props.userData.FavoriteMovies.includes(m.id)),
-  ]);*/
+  const [favoriteMoviesList, setFavoriteMoviesList] = useState(
+    props.favoriteMovies
+  );
   //let { userData } = props;
   //console.log(currentUser);
   //console.log(favoriteMoviesList);
@@ -109,9 +109,11 @@ function ProfileView(props) {
         }
       )
       .then(() => {
-        const newFavorites = favoriteMovies.filter((movie) => movie._id != id);
-
-        setFavorite(newFavorites);
+        const newFavorites = favoriteMoviesList.filter(
+          (movie) => movie._id != id
+        );
+        setFavoriteMoviesList(newFavorites);
+        props.setFavorite(newFavorites);
       })
       .catch((e) => {
         console.error(e);
@@ -150,7 +152,7 @@ function ProfileView(props) {
       <Card id="update-user-card">
         <Card.Body>
           <FavoriteMoviesView
-            favoriteMoviesList={favoriteMovies}
+            favoriteMoviesList={favoriteMoviesList}
             removeFav={removeFav}
           />
         </Card.Body>

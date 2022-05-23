@@ -11,7 +11,7 @@ import { UserData } from './user-data';
 import { FavoriteMoviesView } from './favorite-movies';
 import { UpdateUser } from './update-user';
 
-export function ProfileView(props) {
+function ProfileView(props) {
   let { userData, movies } = props;
   const [currentUser, setCurrentUser] = useState(props.userData);
   const [updatedUserData, setUpdatedUser] = useState(props.userData);
@@ -165,4 +165,6 @@ let mapStateToProps = (state) => {
   return { movies: state.movies, userData: state.userData };
 };
 
-export default connect(mapStateToProps, { setMovies, setUserData })(MainView);
+export default connect(mapStateToProps, { setMovies, setUserData })(
+  ProfileView
+);

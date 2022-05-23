@@ -108,9 +108,14 @@ export function ProfileView(props) {
         }
       )
       .then(() => {
-        setFavoriteMoviesList(
-          favoriteMoviesList.filter((movie) => movie._id != id)
+        const newFavorites = favoriteMoviesList.filter(
+          (movie) => movie._id != id
         );
+        currentUser.FavoriteMovies = currentUser.FavoriteMovies.filter(
+          (movie) => movie._id !== id
+        );
+        setFavoriteMoviesList(newFavorites);
+        props.setUserData(currentUser);
       })
       .catch((e) => {
         console.error(e);

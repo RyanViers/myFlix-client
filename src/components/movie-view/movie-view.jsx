@@ -1,6 +1,8 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { setFavorite } from '../../actions/actions';
 import { Link } from 'react-router-dom';
 import './movie-view.scss';
 
@@ -12,8 +14,8 @@ export class MovieView extends React.Component {
 
     const addFavoriteMovie = (movie, userData) => {
       const token = localStorage.getItem('token');
-      const addedMovie = userData.FavoriteMovies.filter((m) =>
-        movie._id.includes(m._id)
+      const addedMovie = userData.FavoriteMovies.filter(
+        (m) => m._id.includes.movie._id
       );
       console.log(addedMovie);
       if (addedMovie.length > 0) {

@@ -165,6 +165,4 @@ let mapStateToProps = (state) => {
   return { movies: state.movies, userData: state.userData };
 };
 
-export default connect(mapStateToProps, { setMovies, setUserData })(
-  ProfileView
-);
+export default connect(mapStateToProps)(ProfileView);

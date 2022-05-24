@@ -11,13 +11,14 @@ import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 export class MovieView extends React.Component {
   render() {
     const { user, userData, movie, onBackClick } = this.props;
+    const { favoriteMovies } = props;
 
     const addFavoriteMovie = (movie, userData) => {
       const token = localStorage.getItem('token');
-      const addedMovie = userData.FavoriteMovies.filter(
-        (m) => m._id.includes.movie._id
+      const addedMovie = favoriteMovies.filter((m) =>
+        m._id.includes(movie._id)
       );
-      console.log(addedMovie);
+      console.log(addedMovie.length);
       if (addedMovie.length > 0) {
         alert('Movie is already a favorite.');
         return;
@@ -30,7 +31,10 @@ export class MovieView extends React.Component {
             },
             {
               headers: { Authorization: `Bearer ${token}` },
-            }
+            }.then(() => {
+              const newList = favoriteMovies.push(movie);
+              this.props.setFavorite(newList);
+            })
           )
           .catch((e) => {
             console.error(e);
@@ -103,7 +107,23 @@ export class MovieView extends React.Component {
   }
 }
 
-MovieView.propTypes = {
+let mapStateToProps = (state) => {
+  return {
+    //movies: state.movies,
+    //user: state.user,
+    //userData: state.userData,
+    favoriteMovies: state.favoriteMovies,
+  };
+};
+
+export default connect(mapStateToProps, {
+  //setMovies,
+  //setUser,
+  //setUserData,
+  setFavorite,
+})(MainView);
+
+/*MovieView.propTypes = {
   movie: propTypes.shape({
     Title: propTypes.string.isRequired,
     Description: propTypes.string.isRequired,
@@ -120,4 +140,4 @@ MovieView.propTypes = {
     ImagePath: propTypes.string.isRequired,
   }).isRequired,
   onBackClick: propTypes.func.isRequired,
-};
+};*/

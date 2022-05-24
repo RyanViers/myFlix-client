@@ -32,12 +32,13 @@ function MovieView(props) {
           },
           {
             headers: { Authorization: `Bearer ${token}` },
-          }.then(() => {
-            const newList = currentList.add(movie);
-            setCurrentList(newList);
-            this.props.setFavorite(newList);
-          })
+          }
         )
+        .then(() => {
+          const newList = currentList.add(movie);
+          setCurrentList(newList);
+          this.props.setFavorite(newList);
+        })
         .catch((e) => {
           console.error(e);
           alert('Unable to add movie to list.');

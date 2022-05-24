@@ -9,7 +9,7 @@ import './movie-view.scss';
 import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 
 //class MovieView extends React.Component {
-function MovieView() {
+function MovieView(props) {
   //render() {
   const { user, userData, movie, onBackClick } = this.props;
   const { currentList, setCurrentList } = useState(props.favoriteMovies);

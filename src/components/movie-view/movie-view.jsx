@@ -16,12 +16,13 @@ function MovieView(props) {
 
   const addFavoriteMovie = (movie, userData) => {
     const token = localStorage.getItem('token');
-    const addedMovie = userData.FavoriteMovies.filter((m) =>
+    let addedMovie = userData.FavoriteMovies.filter((m) =>
       m._id.includes(movie._id)
     );
     console.log(addedMovie.length);
     if (addedMovie.length > 0) {
       alert('Movie is already a favorite.');
+      addedMovie = 0;
       return;
     } else {
       axios
@@ -35,10 +36,9 @@ function MovieView(props) {
           }
         )
         .then(() => {
-          const newList = currentList.add(movie);
+          const newList = currentList.push(movie);
           setCurrentList(newList);
-          this.props.setFavorite(newList);
-          addedMovie = null;
+          this.props.setFavorite(currentList);
         })
         .catch((e) => {
           console.error(e);

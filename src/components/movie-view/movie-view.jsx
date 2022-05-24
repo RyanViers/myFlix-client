@@ -11,7 +11,7 @@ import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 class MovieView extends React.Component {
   render() {
     const { user, userData, movie, onBackClick } = this.props;
-    const { favoriteMovies } = props;
+    const { currentList } = props.favoriteMovies;
 
     const addFavoriteMovie = (movie, userData) => {
       const token = localStorage.getItem('token');
@@ -32,7 +32,7 @@ class MovieView extends React.Component {
             {
               headers: { Authorization: `Bearer ${token}` },
             }.then(() => {
-              const newList = favoriteMovies.push(movie);
+              const newList = currentList.add(movie);
               this.props.setFavorite(newList);
             })
           )

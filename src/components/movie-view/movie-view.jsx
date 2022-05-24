@@ -38,7 +38,7 @@ function MovieView(props) {
           const newList = currentList.add(movie);
           setCurrentList(newList);
           this.props.setFavorite(newList);
-          return;
+          addedMovie = null;
         })
         .catch((e) => {
           console.error(e);

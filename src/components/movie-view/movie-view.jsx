@@ -8,7 +8,7 @@ import './movie-view.scss';
 
 import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 
-export class MovieView extends React.Component {
+class MovieView extends React.Component {
   render() {
     const { user, userData, movie, onBackClick } = this.props;
     const { favoriteMovies } = props;
@@ -121,7 +121,7 @@ export default connect(mapStateToProps, {
   //setUser,
   //setUserData,
   setFavorite,
-})(MainView);
+})(MovieView);
 
 /*MovieView.propTypes = {
   movie: propTypes.shape({

@@ -81,6 +81,39 @@ class MainView extends React.Component {
       });
   }
 
+  addFavoriteMovie(movie, userData) {
+    const token = localStorage.getItem('token');
+    let addedMovie = userData.FavoriteMovies.filter((m) =>
+      m._id.includes(movie._id)
+    );
+    console.log(addedMovie.length);
+    if (addedMovie.length > 0) {
+      alert('Movie is already a favorite.');
+      addedMovie = 0;
+      return;
+    } else {
+      axios
+        .post(
+          `https://ryan-viers-movie-app.herokuapp.com/users/${user}/movies/${movie._id}`,
+          {
+            FavoriteMovies: movie._id,
+          },
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        )
+        .then(() => {
+          const newList = currentList.push(movie);
+          setCurrentList(newList);
+          this.props.setFavorite(currentList);
+        })
+        .catch((e) => {
+          console.error(e);
+          alert('Unable to add movie to list.');
+        });
+    }
+  }
+
   /*When a user successfully logs in, this function updates the 'user' property in state to that 'particular user'.*/
   onLoggedIn(authData) {
     console.log(authData);

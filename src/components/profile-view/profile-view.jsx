@@ -106,7 +106,7 @@ function ProfileView(props) {
         }
       )
       .then(() => {
-        deleteMovie(id);
+        deleteFavorite(id);
       })
       .catch((e) => {
         console.error(e);
@@ -164,7 +164,7 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
   return {
-    deleteMovie: (id) => {
+    deleteFavorite: (id) => {
       dispatch({ type: 'DELETE_FAVORITE', value: id });
     },
   };

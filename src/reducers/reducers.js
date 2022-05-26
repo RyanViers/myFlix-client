@@ -37,7 +37,7 @@ function favoriteMovies(state = [], action) {
     case ADD_FAVORITE:
       return [state, action.value];
     case DELETE_FAVORITE:
-      return [state.filter((movie) => movie._id !== action.value)];
+      return [...state.filter((movie) => movie._id !== action.value)];
     default:
       return state;
   }

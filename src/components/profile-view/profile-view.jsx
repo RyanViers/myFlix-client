@@ -17,7 +17,7 @@ import { FavoriteMoviesView } from './favorite-movies';
 import { UpdateUser } from './update-user';
 
 function ProfileView(props) {
-  const { userData, movies, favoriteMovies, deleteFavorite } = props;
+  const { userData, movies, favoriteMovies } = props;
   //const { user, userData, movies, favoriteMovies, deleteFavorite } = props;
   //let { userData, movies, favoriteMovies } = props;
   //const [currentUser, setCurrentUser] = useState({});
@@ -119,7 +119,7 @@ function ProfileView(props) {
         );*/
         //props.setFavorite(newList);
         //const newList = [...props.favoriteMovies.filter();]
-        deleteFavorite(id);
+        this.props.deleteFavorite(id);
       })
       .catch((e) => {
         console.error(e);
@@ -177,11 +177,11 @@ let mapStateToProps = (state) => {
   };
 };
 
-let mapDispatchToProps = (dispatch) => {
+/*let mapDispatchToProps = (dispatch) => {
   return {
     deleteFavorite,
     setFavorite,
   };
-};
+};*/
 
-export default connect(mapStateToProps, mapDispatchToProps())(ProfileView);
+export default connect(mapStateToProps, { deleteFavorite })(ProfileView);

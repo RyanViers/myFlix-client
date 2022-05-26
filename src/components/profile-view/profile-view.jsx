@@ -37,7 +37,7 @@ export function ProfileView({ user, userData, movies, onBackClick }) {
         setCurrentUser(response.data);
         setUpdatedUser(response.data);
         setFavoriteMoviesList(
-          response.data.FavoriteMovies
+          response.data.user.FavoriteMovies
           //movies.filter((m) => response.data.FavoriteMovies.includes(m._id))
         );
       })

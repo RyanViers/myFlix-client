@@ -103,11 +103,12 @@ class MainView extends React.Component {
             headers: { Authorization: `Bearer ${token}` },
           }
         )
-        /*.then(() => {
-          const newList = currentList.push(movie);
-          setCurrentList(newList);
-          this.props.setFavorite(currentList);
-        })*/
+        .then(() => {
+          alert('Movie Added to Favorites.');
+          //const newList = currentList.push(movie);
+          //setCurrentList(newList);
+          //this.props.setFavorite(currentList);
+        })
         .catch((e) => {
           console.error(e);
           alert('Unable to add movie to list.');

@@ -50,7 +50,6 @@ export class MovieView extends React.Component {
                   id="movie-view-button"
                   onClick={() => {
                     addFavoriteMovie(movie, userData);
-                    alert('Added to Favorites');
                   }}
                 >
                   Add To Favorite Movies

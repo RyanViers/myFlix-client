@@ -117,7 +117,6 @@ function ProfileView(props) {
         //props.setFavorite(newList);
         //const newList = [...props.favoriteMovies.filter();]
         props.deleteFavorite(id);
-        console.log(newList);
       })
       .catch((e) => {
         console.error(e);

@@ -24,6 +24,10 @@ function ProfileView(props) {
   //const [updatedUser, setUpdatedUser] = useState({});
   //const [favoriteMoviesList, setFavoriteMoviesList] = useState([]);
 
+  deleteFavorite = (id) => {
+    this.props.deleteFavorite(id);
+  };
+
   let token = localStorage.getItem('token');
   axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
@@ -107,7 +111,7 @@ function ProfileView(props) {
       )
       .then(() => {
         console.log(id);
-        this.props.deleteFavorite(id);
+        deleteFavorite(id);
       })
       .catch((e) => {
         console.error(e);

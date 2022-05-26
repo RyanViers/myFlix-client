@@ -108,6 +108,7 @@ function ProfileView(props) {
       .then(() => {
         console.log(id);
         deleteFavorite(id);
+        console.log(id);
       })
       .catch((e) => {
         console.error(e);

@@ -107,7 +107,7 @@ function ProfileView(props) {
       )
       .then(() => {
         console.log(id);
-        this.props.deleteFavorite(id);
+        this.deleteFavorite(id);
         console.log(id);
       })
       .catch((e) => {

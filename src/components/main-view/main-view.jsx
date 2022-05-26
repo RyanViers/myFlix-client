@@ -83,7 +83,8 @@ class MainView extends React.Component {
 
   addFavoriteMovie(movie, userData) {
     const token = localStorage.getItem('token');
-    let addedMovie = userData.FavoriteMovies.filter((m) =>
+    let addedMovie = null;
+    addedMovie = userData.FavoriteMovies.filter((m) =>
       m._id.includes(movie._id)
     );
     console.log(addedMovie.length);
@@ -94,7 +95,7 @@ class MainView extends React.Component {
     } else {
       axios
         .post(
-          `https://ryan-viers-movie-app.herokuapp.com/users/${user}/movies/${movie._id}`,
+          `https://ryan-viers-movie-app.herokuapp.com/users/${userData.Username}/movies/${movie._id}`,
           {
             FavoriteMovies: movie._id,
           },
@@ -102,11 +103,11 @@ class MainView extends React.Component {
             headers: { Authorization: `Bearer ${token}` },
           }
         )
-        .then(() => {
+        /*.then(() => {
           const newList = currentList.push(movie);
           setCurrentList(newList);
           this.props.setFavorite(currentList);
-        })
+        })*/
         .catch((e) => {
           console.error(e);
           alert('Unable to add movie to list.');

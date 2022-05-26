@@ -125,6 +125,8 @@ function ProfileView(props) {
       });
   };
 
+  useEffect(() => {}, [favoriteMovies]);
+
   return (
     <Container>
       <Row id="user-row">

@@ -8,10 +8,45 @@ import './movie-view.scss';
 
 import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 
-export class MovieView extends React.Component {
+class MovieView extends React.Component {
   render() {
-    const { user, userData, movie, onBackClick, addFavoriteMovie } = this.props;
+    const { userData, movie, onBackClick, addFavoriteMovie } = this.props;
 
+    addFavoriteMovie(movie, userData) {
+      const token = localStorage.getItem('token');
+      let addedMovie = null;
+      addedMovie = userData.FavoriteMovies.filter((m) =>
+        m._id.includes(movie._id)
+      );
+      console.log(addedMovie.length);
+      if (addedMovie.length > 0) {
+        alert('Movie is already a favorite.');
+        addedMovie = 0;
+        return;
+      } else {
+        axios
+          .post(
+            `https://ryan-viers-movie-app.herokuapp.com/users/${userData.Username}/movies/${movie._id}`,
+            {
+              FavoriteMovies: movie._id,
+            },
+            {
+              headers: { Authorization: `Bearer ${token}` },
+            }
+          )
+          .then(() => {
+            alert('Movie Added to Favorites.');
+            this.props.addFavorite(movie);
+            //const newList = currentList.push(movie);
+            //setCurrentList(newList);
+            //this.props.setFavorite(currentList);
+          })
+          .catch((e) => {
+            console.error(e);
+            alert('Unable to add movie to list.');
+          });
+      }
+    }
     return (
       <Container>
         <Row>
@@ -75,7 +110,9 @@ export class MovieView extends React.Component {
   }
 }
 
-MovieView.propTypes = {
+export default connect(null, {addFavorite})(MovieView);
+
+/*MovieView.propTypes = {
   movie: propTypes.shape({
     Title: propTypes.string.isRequired,
     Description: propTypes.string.isRequired,
@@ -92,4 +129,4 @@ MovieView.propTypes = {
     ImagePath: propTypes.string.isRequired,
   }).isRequired,
   onBackClick: propTypes.func.isRequired,
-};
+};*/

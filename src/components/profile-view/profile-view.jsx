@@ -125,7 +125,7 @@ function ProfileView(props) {
       });
   };
 
-  useEffect(() => {}, [favoriteMovies]);
+  useEffect(() => {}, [props.favoriteMovies]);
 
   return (
     <Container>

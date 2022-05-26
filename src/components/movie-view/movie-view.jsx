@@ -14,8 +14,7 @@ class MovieView extends React.Component {
 
     const addFavoriteMovie = (movie, userData) => {
       const token = localStorage.getItem('token');
-      let addedMovie = null;
-      addedMovie = userData.FavoriteMovies.filter((m) =>
+      const addedMovie = userData.FavoriteMovies.filter((m) =>
         m._id.includes(movie._id)
       );
       console.log(addedMovie.length);

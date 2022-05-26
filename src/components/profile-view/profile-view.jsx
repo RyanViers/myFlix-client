@@ -12,7 +12,7 @@ import { FavoriteMoviesView } from './favorite-movies';
 import { UpdateUser } from './update-user';
 
 function ProfileView(props) {
-  const { user, userData, movies, favoriteMovies } = props;
+  const { user, userData, movies, favoriteMovies, deleteFavorite } = props;
   //let { userData, movies, favoriteMovies } = props;
   //const [currentUser, setCurrentUser] = useState({});
   //const [updatedUserData, setUpdatedUser] = useState({});
@@ -107,7 +107,7 @@ function ProfileView(props) {
       )
       .then(() => {
         console.log(id);
-        this.props.deleteFavorite(id);
+        deleteFavorite(id);
       })
       .catch((e) => {
         console.error(e);

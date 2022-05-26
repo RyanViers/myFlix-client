@@ -12,11 +12,11 @@ import { FavoriteMoviesView } from './favorite-movies';
 import { UpdateUser } from './update-user';
 
 function ProfileView(props) {
-  const { userData, favoriteMovies } = props;
+  const { user, userData, favoriteMovies } = props;
   //let { userData, movies, favoriteMovies } = props;
-  const [currentUser, setCurrentUser] = useState({});
-  const [updatedUserData, setUpdatedUser] = useState({});
-  const [favoriteMoviesList, setFavoriteMoviesList] = useState([]);
+  //const [currentUser, setCurrentUser] = useState({});
+  //const [updatedUserData, setUpdatedUser] = useState({});
+  //const [favoriteMoviesList, setFavoriteMoviesList] = useState([]);
   //let { userData } = props;
   //console.log(currentUser);
   //console.log(favoriteMoviesList);
@@ -45,13 +45,13 @@ function ProfileView(props) {
       });
   };*/
 
-  useEffect(() => {
+  /*useEffect(() => {
     if (token !== null) {
       getUserData(token, user);
     } else {
       console.log('Not authorized');
     }
-  }, []);
+  }, []);*/
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -145,7 +145,7 @@ function ProfileView(props) {
       <Card id="update-user-card">
         <Card.Body>
           <FavoriteMoviesView
-            favoriteMoviesList={favoriteMoviesList}
+            favoriteMoviesList={favoriteMovies}
             removeFav={removeFav}
           />
         </Card.Body>

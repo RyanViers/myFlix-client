@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { setMovies, setUserData, setFavorite } from '../../actions/actions';
+import { setMovies, setUserData, deleteFavorite } from '../../actions/actions';
 import propTypes from 'prop-types';
 import './profile-view.scss';
 
@@ -11,7 +11,8 @@ import { UserData } from './user-data';
 import { FavoriteMoviesView } from './favorite-movies';
 import { UpdateUser } from './update-user';
 
-export function ProfileView({ user, userData, movies, onBackClick }) {
+function ProfileView(props) {
+  const { userData, favoriteMovies } = props;
   //let { userData, movies, favoriteMovies } = props;
   const [currentUser, setCurrentUser] = useState({});
   const [updatedUserData, setUpdatedUser] = useState({});
@@ -26,7 +27,7 @@ export function ProfileView({ user, userData, movies, onBackClick }) {
   let token = localStorage.getItem('token');
   axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
-  const getUserData = (token, username) => {
+  /*const getUserData = (token, username) => {
     axios
       .get(`https://ryan-viers-movie-app.herokuapp.com/users/${username}`, {
         headers: { Authorization: `Bearer ${token}` },
@@ -42,7 +43,7 @@ export function ProfileView({ user, userData, movies, onBackClick }) {
       .catch((e) => {
         console.error(e);
       });
-  };
+  };*/
 
   useEffect(() => {
     if (token !== null) {
@@ -60,6 +61,7 @@ export function ProfileView({ user, userData, movies, onBackClick }) {
         updatedUserData
       )
       .then((response) => {
+        setUserData(response.data);
         alert('Profile updated');
         //setUserData(null);
         localStorage.removeItem('token');
@@ -104,7 +106,7 @@ export function ProfileView({ user, userData, movies, onBackClick }) {
         }
       )
       .then(() => {
-        setFavoriteMoviesList.filter((movie) => movie._id != id);
+        deleteMovie(id);
       })
       .catch((e) => {
         console.error(e);
@@ -152,7 +154,7 @@ export function ProfileView({ user, userData, movies, onBackClick }) {
   );
 }
 
-/*let mapStateToProps = (state) => {
+let mapStateToProps = (state) => {
   return {
     movies: state.movies,
     userData: state.userData,
@@ -160,6 +162,12 @@ export function ProfileView({ user, userData, movies, onBackClick }) {
   };
 };
 
-export default connect(mapStateToProps, { setUserData, setFavorite })(
-  ProfileView
-);*/
+let mapDispatchToProps = (dispatch) => {
+  return {
+    deleteMovie: (movie) => {
+      dispatch({ type: 'DELETE_FAVORITE', value: id });
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileView);

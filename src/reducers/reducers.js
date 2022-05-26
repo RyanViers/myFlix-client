@@ -7,6 +7,8 @@ import {
   SET_USER,
   SET_USERDATA,
   SET_FAVORITE,
+  ADD_FAVORITE,
+  DELETE_FAVORITE,
   SET_FILTER,
 } from '../actions/actions';
 
@@ -32,6 +34,10 @@ function favoriteMovies(state = [], action) {
   switch (action.type) {
     case SET_FAVORITE:
       return action.value;
+    case ADD_FAVORITE:
+      return [...state, action.value];
+    case DELETE_FAVORITE:
+      return [...state.filter((movie) => movie._id !== action.id)];
     default:
       return state;
   }

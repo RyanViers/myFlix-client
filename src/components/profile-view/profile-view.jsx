@@ -164,7 +164,7 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
   return {
-    deleteMovie: (movie) => {
+    deleteMovie: (id) => {
       dispatch({ type: 'DELETE_FAVORITE', value: id });
     },
   };

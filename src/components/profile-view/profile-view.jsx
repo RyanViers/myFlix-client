@@ -3,7 +3,12 @@ import axios from 'axios';
 import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { setMovies, setUserData, deleteFavorite } from '../../actions/actions';
+import {
+  setMovies,
+  setUserData,
+  deleteFavorite,
+  setFavorite,
+} from '../../actions/actions';
 import propTypes from 'prop-types';
 import './profile-view.scss';
 
@@ -106,9 +111,13 @@ function ProfileView(props) {
         }
       )
       .then(() => {
-        console.log(id);
-        props.deleteFavorite(id);
-        console.log(id);
+        const newList = props.favoriteMovies.filter(
+          (movie) => movie._id !== id
+        );
+        setFavorite(newList);
+        //const newList = [...props.favoriteMovies.filter();]
+        //props.deleteFavorite(id);
+        console.log(newList);
       })
       .catch((e) => {
         console.error(e);
@@ -167,6 +176,7 @@ let mapStateToProps = (state) => {
 let mapDispatchToProps = (dispatch) => {
   return {
     deleteFavorite,
+    setFavorite,
   };
 };
 

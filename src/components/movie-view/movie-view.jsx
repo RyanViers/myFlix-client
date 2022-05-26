@@ -20,7 +20,6 @@ class MovieView extends React.Component {
       console.log(addedMovie.length);
       if (addedMovie.length > 0) {
         alert('Movie is already a favorite.');
-        addedMovie = 0;
         return;
       } else {
         axios

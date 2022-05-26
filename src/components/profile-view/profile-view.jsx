@@ -12,7 +12,7 @@ import { FavoriteMoviesView } from './favorite-movies';
 import { UpdateUser } from './update-user';
 
 function ProfileView(props) {
-  const { user, userData, favoriteMovies } = props;
+  const { user, userData, movies, favoriteMovies } = props;
   //let { userData, movies, favoriteMovies } = props;
   //const [currentUser, setCurrentUser] = useState({});
   //const [updatedUserData, setUpdatedUser] = useState({});
@@ -23,10 +23,6 @@ function ProfileView(props) {
   //const [userdata, setUserdata] = useState({});
   //const [updatedUser, setUpdatedUser] = useState({});
   //const [favoriteMoviesList, setFavoriteMoviesList] = useState([]);
-
-  deleteFavorite = (id) => {
-    this.props.deleteFavorite(id);
-  };
 
   let token = localStorage.getItem('token');
   axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
@@ -111,7 +107,7 @@ function ProfileView(props) {
       )
       .then(() => {
         console.log(id);
-        deleteFavorite(id);
+        deleteFavorite(movies, id);
       })
       .catch((e) => {
         console.error(e);
@@ -170,7 +166,7 @@ let mapStateToProps = (state) => {
 let mapDispatchToProps = (dispatch) => {
   return {
     deleteFavorite: (id) => {
-      dispatch({ type: 'DELETE_FAVORITE', value: id });
+      dispatch({ type: 'DELETE_FAVORITE', value: movies, id });
     },
   };
 };

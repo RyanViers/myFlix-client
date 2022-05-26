@@ -111,12 +111,12 @@ function ProfileView(props) {
         }
       )
       .then(() => {
-        const newList = props.favoriteMovies.filter(
+        /*const newList = props.favoriteMovies.filter(
           (movie) => movie._id !== id
-        );
-        props.setFavorite(newList);
+        );*/
+        //props.setFavorite(newList);
         //const newList = [...props.favoriteMovies.filter();]
-        //props.deleteFavorite(id);
+        props.deleteFavorite(id);
         console.log(newList);
       })
       .catch((e) => {

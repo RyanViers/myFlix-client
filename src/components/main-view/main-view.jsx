@@ -262,9 +262,9 @@ class MainView extends React.Component {
                 if (movies.length === 0) return <div className="main-view" />;
                 return (
                   <ProfileView
-                    userData={userData}
-                    movies={movies}
-                    favoriteMovies={favoriteMovies}
+                  //userData={userData}
+                  //movies={movies}
+                  //favoriteMovies={favoriteMovies}
                   />
                 );
               }}

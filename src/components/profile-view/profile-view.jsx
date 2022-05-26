@@ -17,6 +17,7 @@ import { FavoriteMoviesView } from './favorite-movies';
 import { UpdateUser } from './update-user';
 
 function ProfileView(props) {
+  const { userData, movies, favoriteMovies, deleteFavorite } = this.props;
   //const { user, userData, movies, favoriteMovies, deleteFavorite } = props;
   //let { userData, movies, favoriteMovies } = props;
   //const [currentUser, setCurrentUser] = useState({});
@@ -62,7 +63,7 @@ function ProfileView(props) {
     e.preventDefault();
     axios
       .put(
-        `https://ryan-viers-movie-app.herokuapp.com/users/${user}`,
+        `https://ryan-viers-movie-app.herokuapp.com/users/${userData.Username}`,
         updatedUserData
       )
       .then((response) => {
@@ -88,7 +89,9 @@ function ProfileView(props) {
 
   const deleteProfile = (e) => {
     axios
-      .delete(`https://ryan-viers-movie-app.herokuapp.com/users/${user}`)
+      .delete(
+        `https://ryan-viers-movie-app.herokuapp.com/users/${userData.Username}`
+      )
       .then((response) => {
         alert('Your profile has beeen deleted');
         //setUserData(null);
@@ -105,7 +108,7 @@ function ProfileView(props) {
   const removeFav = (id) => {
     axios
       .delete(
-        `https://ryan-viers-movie-app.herokuapp.com/users/${user}/movies/${id}`,
+        `https://ryan-viers-movie-app.herokuapp.com/users/${userData.Username}/movies/${id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -116,7 +119,7 @@ function ProfileView(props) {
         );*/
         //props.setFavorite(newList);
         //const newList = [...props.favoriteMovies.filter();]
-        props.deleteFavorite(id);
+        deleteFavorite(id);
       })
       .catch((e) => {
         console.error(e);
@@ -124,7 +127,7 @@ function ProfileView(props) {
       });
   };
 
-  useEffect(() => {}, [props.favoriteMovies]);
+  //useEffect(() => {}, [favoriteMovies]);
 
   return (
     <Container>
@@ -174,7 +177,7 @@ let mapStateToProps = (state) => {
   };
 };
 
-let mapDispatchToProps = (state) => {
+let mapDispatchToProps = (dispatch) => {
   return {
     deleteFavorite,
     setFavorite,

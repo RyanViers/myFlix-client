@@ -11,11 +11,11 @@ import { UserData } from './user-data';
 import { FavoriteMoviesView } from './favorite-movies';
 import { UpdateUser } from './update-user';
 
-function ProfileView(props) {
-  let { userData, movies, favoriteMovies } = props;
-  //const [currentUser, setCurrentUser] = useState(props.userData);
+export function ProfileView({ user, userData, movies, onBackClick }) {
+  //let { userData, movies, favoriteMovies } = props;
+  const [currentUser, setCurrentUser] = useState({});
   const [updatedUserData, setUpdatedUser] = useState({});
-  const [favoriteMoviesList, setFavoriteMoviesList] = useState(favoriteMovies);
+  const [favoriteMoviesList, setFavoriteMoviesList] = useState([]);
   //let { userData } = props;
   //console.log(currentUser);
   //console.log(favoriteMoviesList);
@@ -26,13 +26,13 @@ function ProfileView(props) {
   let token = localStorage.getItem('token');
   axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
-  /*const getUserData = (token, username) => {
+  const getUserData = (token, username) => {
     axios
       .get(`https://ryan-viers-movie-app.herokuapp.com/users/${username}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        setUserdata(response.data);
+        setCurrentUser(response.data);
         setUpdatedUser(response.data);
         setFavoriteMoviesList(
           response.data.FavoriteMovies
@@ -41,7 +41,6 @@ function ProfileView(props) {
       })
       .catch((e) => {
         console.error(e);
-        console.log('here');
       });
   };
 
@@ -51,18 +50,18 @@ function ProfileView(props) {
     } else {
       console.log('Not authorized');
     }
-  }, []);*/
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
       .put(
-        `https://ryan-viers-movie-app.herokuapp.com/users/${userData.Username}`,
+        `https://ryan-viers-movie-app.herokuapp.com/users/${user}`,
         updatedUserData
       )
       .then((response) => {
         alert('Profile updated');
-        setUserData(null);
+        //setUserData(null);
         localStorage.removeItem('token');
         localStorage.removeItem('user');
 
@@ -82,12 +81,10 @@ function ProfileView(props) {
 
   const deleteProfile = (e) => {
     axios
-      .delete(
-        `https://ryan-viers-movie-app.herokuapp.com/users/${userData.Username}`
-      )
+      .delete(`https://ryan-viers-movie-app.herokuapp.com/users/${user}`)
       .then((response) => {
         alert('Your profile has beeen deleted');
-        setUserData(null);
+        //setUserData(null);
         localStorage.removeItem('user');
         localStorage.removeItem('token');
 
@@ -101,17 +98,13 @@ function ProfileView(props) {
   const removeFav = (id) => {
     axios
       .delete(
-        `https://ryan-viers-movie-app.herokuapp.com/users/${userData.Username}/movies/${id}`,
+        `https://ryan-viers-movie-app.herokuapp.com/users/${user}/movies/${id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
       )
       .then(() => {
-        const newFavorites = favoriteMoviesList.filter(
-          (movie) => movie._id != id
-        );
-        setFavoriteMoviesList(newFavorites);
-        props.setFavorite(newFavorites);
+        setFavoriteMoviesList.filter((movie) => movie._id != id);
       })
       .catch((e) => {
         console.error(e);
@@ -159,7 +152,7 @@ function ProfileView(props) {
   );
 }
 
-let mapStateToProps = (state) => {
+/*let mapStateToProps = (state) => {
   return {
     movies: state.movies,
     userData: state.userData,
@@ -169,4 +162,4 @@ let mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, { setUserData, setFavorite })(
   ProfileView
-);
+);*/

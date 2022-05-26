@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import propTypes from 'prop-types';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { setFavorite } from '../../actions/actions';
+import { setFavorite, addFavorite } from '../../actions/actions';
 import { Link } from 'react-router-dom';
 import './movie-view.scss';
 

@@ -10,9 +10,9 @@ import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 
 class MovieView extends React.Component {
   render() {
-    const { userData, movie, onBackClick, addFavoriteMovie } = this.props;
+    const { userData, movie, onBackClick } = this.props;
 
-    addFavoriteMovie(movie, userData) {
+    addFavoriteMovie = (movie, userData) => {
       const token = localStorage.getItem('token');
       let addedMovie = null;
       addedMovie = userData.FavoriteMovies.filter((m) =>
@@ -46,7 +46,7 @@ class MovieView extends React.Component {
             alert('Unable to add movie to list.');
           });
       }
-    }
+    };
     return (
       <Container>
         <Row>
@@ -110,7 +110,7 @@ class MovieView extends React.Component {
   }
 }
 
-export default connect(null, {addFavorite})(MovieView);
+export default connect(null, { addFavorite })(MovieView);
 
 /*MovieView.propTypes = {
   movie: propTypes.shape({

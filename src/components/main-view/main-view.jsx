@@ -19,7 +19,7 @@ import './main-view.scss';
 
 import { LoginView } from '../login-view/login-view';
 //import { MovieCard } from '../movie-card/movie-card';
-import MovieView from '../movie-view/movie-view';
+import { MovieView } from '../movie-view/movie-view';
 import { NavbarView } from '../navbar-view/navbar';
 import { RegistrationView } from '../registration-view/registration-view';
 import ProfileView from '../profile-view/profile-view';

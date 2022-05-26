@@ -12,7 +12,7 @@ class MovieView extends React.Component {
   render() {
     const { userData, movie, onBackClick } = this.props;
 
-    addFavoriteMovie = (movie, userData) => {
+    const addFavoriteMovie = (movie, userData) => {
       const token = localStorage.getItem('token');
       let addedMovie = null;
       addedMovie = userData.FavoriteMovies.filter((m) =>

@@ -29,7 +29,7 @@ export function addFavorite(value) {
 }
 
 export function deleteFavorite(value) {
-  return { type: DELETE_FAVORITE, value: { movies, id } };
+  return { type: DELETE_FAVORITE, value };
 }
 
 export function setFilter(value) {

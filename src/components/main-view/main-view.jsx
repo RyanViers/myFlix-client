@@ -161,7 +161,7 @@ class MainView extends React.Component {
                     <MovieView
                       user={user}
                       userData={userData}
-                      //addFavoriteMovie={this.addFavoriteMovie}
+                      favoriteMovies={favoriteMovies}
                       movie={movies.find((m) => m._id === match.params.movieId)}
                       onBackClick={() => history.goBack()}
                     />

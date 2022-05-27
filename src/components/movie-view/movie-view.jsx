@@ -10,11 +10,11 @@ import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 
 class MovieView extends React.Component {
   render() {
-    const { userData, movie, onBackClick } = this.props;
+    const { userData, movie, onBackClic, favoriteMovies } = this.props;
 
-    const addFavoriteMovie = (movie, userData) => {
+    const addFavoriteMovie = (movie, userData, favoriteMovies) => {
       const token = localStorage.getItem('token');
-      const addedMovie = userData.FavoriteMovies.filter((m) =>
+      const addedMovie = favoriteMovies.filter((m) =>
         m._id.includes(movie._id)
       );
       console.log(addedMovie.length);
@@ -35,6 +35,7 @@ class MovieView extends React.Component {
           .then(() => {
             this.props.addFavorite(movie);
             alert('Movie Added to Favorites.');
+            counter = +1;
 
             //const newList = currentList.push(movie);
             //setCurrentList(newList);
@@ -46,10 +47,6 @@ class MovieView extends React.Component {
           });
       }
     };
-
-    useEffect(() => {
-      console.log('effect');
-    }, [userData]);
 
     return (
       <Container>
@@ -88,7 +85,7 @@ class MovieView extends React.Component {
                   variant="secondary"
                   id="movie-view-button"
                   onClick={() => {
-                    addFavoriteMovie(movie, userData);
+                    addFavoriteMovie(movie, userData, favoriteMovies);
                   }}
                 >
                   Add To Favorite Movies

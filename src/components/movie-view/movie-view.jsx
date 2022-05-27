@@ -16,7 +16,7 @@ class MovieView extends React.Component {
       const addedMovie = favoriteMovies.filter((m) =>
         m._id.includes(movie._id)
       );
-      console.log(addedMovie.length);
+
       if (addedMovie.length > 0) {
         alert('Movie is already a favorite.');
         return;

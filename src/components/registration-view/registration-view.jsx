@@ -75,7 +75,6 @@ export function RegistrationView(props) {
         })
         .then((response) => {
           const data = response.data;
-          console.log(data);
           alert('Registration successful, please login!');
           window.open('/', '_self'); //Argument '_self" is necessary so page will open in the current tab.
         })

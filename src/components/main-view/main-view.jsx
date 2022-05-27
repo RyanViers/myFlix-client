@@ -6,7 +6,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 import {
   setMovies,
-  setUser,
+  //setUser,
   setUserData,
   setFavorite,
 } from '../../actions/actions';
@@ -245,7 +245,7 @@ class MainView extends React.Component {
 let mapStateToProps = (state) => {
   return {
     movies: state.movies,
-    user: state.user,
+    //user: state.user,
     userData: state.userData,
     favoriteMovies: state.favoriteMovies,
   };
@@ -253,7 +253,7 @@ let mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, {
   setMovies,
-  setUser,
+  //setUser,
   setUserData,
   setFavorite,
 })(MainView);

@@ -127,7 +127,9 @@ function ProfileView(props) {
       });
   };
 
-  //useEffect(() => {}, []);
+  useEffect(() => {
+    console.log('effect');
+  }, [favoriteMovies]);
 
   return (
     <Container>

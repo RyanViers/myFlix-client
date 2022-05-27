@@ -1,7 +1,7 @@
 /*****Actions*****/
 
 export const SET_MOVIES = 'SET_MOVIES';
-export const SET_USER = 'SET-USER';
+//export const SET_USER = 'SET-USER';
 export const SET_USERDATA = 'SET_USERDATA';
 export const SET_FILTER = 'SET_FILTER';
 export const SET_FAVORITE = 'SET_FAVORITE';

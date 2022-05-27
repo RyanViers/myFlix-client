@@ -43,14 +43,14 @@ function favoriteMovies(state = [], action) {
   }
 }
 
-function user(state = '', action) {
+/*function user(state = '', action) {
   switch (action.type) {
     case SET_USER:
       return action.value;
     default:
       return state;
   }
-}
+}*/
 
 function userData(state = '', action) {
   switch (action.type) {

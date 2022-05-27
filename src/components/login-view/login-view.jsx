@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import propTypes from 'prop-types';
-import { Button, Form, Card } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './login-view.scss';

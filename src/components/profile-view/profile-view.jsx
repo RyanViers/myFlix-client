@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 import { connect } from 'react-redux';
@@ -77,10 +77,6 @@ function ProfileView(props) {
         alert('Unable to delete movie.');
       });
   };
-
-  /*useEffect(() => {
-    console.log('effect');
-  }, [favoriteMovies]);*/
 
   return (
     <Container>

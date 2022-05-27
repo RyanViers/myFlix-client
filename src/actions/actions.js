@@ -12,9 +12,9 @@ export function setMovies(value) {
   return { type: SET_MOVIES, value };
 }
 
-export function setUser(value) {
+/*export function setUser(value) {
   return { type: SET_USER, value };
-}
+}*/
 
 export function setUserData(value) {
   return { type: SET_USERDATA, value };

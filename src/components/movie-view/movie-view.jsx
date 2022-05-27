@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { addFavorite } from '../../actions/actions';
@@ -34,10 +34,6 @@ class MovieView extends React.Component {
           .then(() => {
             this.props.addFavorite(movie);
             alert('Movie Added to Favorites.');
-
-            //const newList = currentList.push(movie);
-            //setCurrentList(newList);
-            //this.props.setFavorite(currentList);
           })
           .catch((e) => {
             console.error(e);

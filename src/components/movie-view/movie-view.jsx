@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import propTypes from 'prop-types';
 import axios from 'axios';
 import { connect } from 'react-redux';
@@ -46,6 +46,11 @@ class MovieView extends React.Component {
           });
       }
     };
+
+    useEffect(() => {
+      console.log('effect');
+    }, [addFavorite]);
+
     return (
       <Container>
         <Row>

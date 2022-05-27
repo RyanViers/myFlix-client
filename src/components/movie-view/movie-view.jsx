@@ -49,7 +49,7 @@ class MovieView extends React.Component {
 
     useEffect(() => {
       console.log('effect');
-    }, [addFavorite]);
+    }, [userData]);
 
     return (
       <Container>

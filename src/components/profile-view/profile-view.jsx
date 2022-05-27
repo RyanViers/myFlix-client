@@ -1,15 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Container, Row, Col, Button, Card } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import {
-  setMovies,
-  setUserData,
-  deleteFavorite,
-  setFavorite,
-} from '../../actions/actions';
-import propTypes from 'prop-types';
+import { setUserData, deleteFavorite } from '../../actions/actions';
 import './profile-view.scss';
 
 import { UserData } from './user-data';
@@ -17,47 +10,12 @@ import { FavoriteMoviesView } from './favorite-movies';
 import { UpdateUser } from './update-user';
 
 function ProfileView(props) {
-  const { userData, movies, favoriteMovies } = props;
-  //const { user, userData, movies, favoriteMovies, deleteFavorite } = props;
-  //let { userData, movies, favoriteMovies } = props;
-  //const [currentUser, setCurrentUser] = useState({});
+  const { userData, favoriteMovies } = props;
+
   const [updatedUserData, setUpdatedUser] = useState({});
-  //const [favoriteMoviesList, setFavoriteMoviesList] = useState([]);
-  //let { userData } = props;
-  //console.log(currentUser);
-  //console.log(favoriteMoviesList);
-  //const [userdata, setUserdata] = useState({});
-  //const [updatedUser, setUpdatedUser] = useState({});
-  //const [favoriteMoviesList, setFavoriteMoviesList] = useState([]);
 
   let token = localStorage.getItem('token');
   axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-
-  /*const getUserData = (token, username) => {
-    axios
-      .get(`https://ryan-viers-movie-app.herokuapp.com/users/${username}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((response) => {
-        setCurrentUser(response.data);
-        setUpdatedUser(response.data);
-        setFavoriteMoviesList(
-          response.data.FavoriteMovies
-          //movies.filter((m) => response.data.FavoriteMovies.includes(m._id))
-        );
-      })
-      .catch((e) => {
-        console.error(e);
-      });
-  };*/
-
-  /*useEffect(() => {
-    if (token !== null) {
-      getUserData(token, user);
-    } else {
-      console.log('Not authorized');
-    }
-  }, []);*/
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -69,7 +27,6 @@ function ProfileView(props) {
       .then((response) => {
         setUserData(response.data);
         alert('Profile updated');
-        //setUserData(null);
         localStorage.removeItem('token');
         localStorage.removeItem('user');
 
@@ -94,7 +51,6 @@ function ProfileView(props) {
       )
       .then((response) => {
         alert('Your profile has beeen deleted');
-        //setUserData(null);
         localStorage.removeItem('user');
         localStorage.removeItem('token');
 
@@ -114,11 +70,6 @@ function ProfileView(props) {
         }
       )
       .then(() => {
-        /*const newList = props.favoriteMovies.filter(
-          (movie) => movie._id !== id
-        );*/
-        //props.setFavorite(newList);
-        //const newList = [...props.favoriteMovies.filter();]
         props.deleteFavorite(id);
       })
       .catch((e) => {
@@ -127,9 +78,9 @@ function ProfileView(props) {
       });
   };
 
-  useEffect(() => {
+  /*useEffect(() => {
     console.log('effect');
-  }, [favoriteMovies]);
+  }, [favoriteMovies]);*/
 
   return (
     <Container>
@@ -178,12 +129,5 @@ let mapStateToProps = (state) => {
     favoriteMovies: state.favoriteMovies,
   };
 };
-
-/*let mapDispatchToProps = (dispatch) => {
-  return {
-    deleteFavorite,
-    setFavorite,
-  };
-};*/
 
 export default connect(mapStateToProps, { deleteFavorite })(ProfileView);

@@ -1,9 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-
 import { connect } from 'react-redux';
-
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { Container, Row, Col } from 'react-bootstrap';
 
 import {
   setMovies,
@@ -11,18 +10,16 @@ import {
   setUserData,
   setFavorite,
 } from '../../actions/actions';
-import MoviesList from '../movies-list/movies-list';
-
-import { Container, Row, Col } from 'react-bootstrap';
 
 import './main-view.scss';
 
-import { LoginView } from '../login-view/login-view';
-//import { MovieCard } from '../movie-card/movie-card';
+import MoviesList from '../movies-list/movies-list';
 import MovieView from '../movie-view/movie-view';
+import ProfileView from '../profile-view/profile-view';
+
+import { LoginView } from '../login-view/login-view';
 import { NavbarView } from '../navbar-view/navbar';
 import { RegistrationView } from '../registration-view/registration-view';
-import ProfileView from '../profile-view/profile-view';
 import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view';
 import { Redirect } from 'react-router-dom';
@@ -57,8 +54,6 @@ class MainView extends React.Component {
       .then((response) => {
         //Assign the result to the state>
         this.props.setMovies(response.data);
-        //this.setState({
-        //movies: response.data,
       })
       .catch(function (error) {
         console.log(error);
@@ -84,8 +79,6 @@ class MainView extends React.Component {
   /*When a user successfully logs in, this function updates the 'user' property in state to that 'particular user'.*/
   onLoggedIn(authData) {
     console.log(authData);
-    /*const { setUser } = this.props;
-    setUser(authData.user.Username);*/
 
     this.setState({
       user: authData.user.Username,
@@ -108,9 +101,7 @@ class MainView extends React.Component {
   render() {
     let { movies, userData, favoriteMovies } = this.props;
     let { user } = this.state;
-    //const { movies, user } = this.state;
-    console.log(user);
-    console.log(userData);
+
     return (
       <Router>
         <Container fluid>
@@ -128,11 +119,6 @@ class MainView extends React.Component {
                   );
                 if (movies.length === 0) return <div className="main-view" />;
                 return <MoviesList movies={movies} />;
-                /* return movies.map((m) => (
-                  <Col md={3} key={m._id}>
-                    <MovieCard movie={m} />
-                  </Col>
-                ));*/
               }}
             />
             <Route
@@ -226,13 +212,7 @@ class MainView extends React.Component {
                     </Col>
                   );
                 if (movies.length === 0) return <div className="main-view" />;
-                return (
-                  <ProfileView
-                  //userData={userData}
-                  //movies={movies}
-                  //favoriteMovies={favoriteMovies}
-                  />
-                );
+                return <ProfileView />;
               }}
             />
             <Route

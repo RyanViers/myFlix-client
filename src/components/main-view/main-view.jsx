@@ -57,7 +57,7 @@ class MainView extends React.Component {
 
   getUserData(token) {
     const username = localStorage.getItem('user');
-    console.log(username);
+
     axios
       .get(`https://ryan-viers-movie-app.herokuapp.com/users/${username}`, {
         headers: { Authorization: `Bearer ${token}` },

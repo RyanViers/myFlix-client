@@ -21,7 +21,7 @@ function ProfileView(props) {
   //const { user, userData, movies, favoriteMovies, deleteFavorite } = props;
   //let { userData, movies, favoriteMovies } = props;
   //const [currentUser, setCurrentUser] = useState({});
-  //const [updatedUserData, setUpdatedUser] = useState({});
+  const [updatedUserData, setUpdatedUser] = useState({});
   //const [favoriteMoviesList, setFavoriteMoviesList] = useState([]);
   //let { userData } = props;
   //console.log(currentUser);

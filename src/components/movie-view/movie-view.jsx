@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import propTypes from 'prop-types';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { setFavorite, addFavorite } from '../../actions/actions';
+import { addFavorite } from '../../actions/actions';
 import { Link } from 'react-router-dom';
 import './movie-view.scss';
 
@@ -10,7 +9,7 @@ import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 
 class MovieView extends React.Component {
   render() {
-    const { userData, movie, onBackClic, favoriteMovies } = this.props;
+    const { userData, movie, onBackClick, favoriteMovies } = this.props;
 
     const addFavoriteMovie = (movie, userData, favoriteMovies) => {
       const token = localStorage.getItem('token');
@@ -111,22 +110,3 @@ class MovieView extends React.Component {
 }
 
 export default connect(null, { addFavorite })(MovieView);
-
-/*MovieView.propTypes = {
-  movie: propTypes.shape({
-    Title: propTypes.string.isRequired,
-    Description: propTypes.string.isRequired,
-    Genre: propTypes.shape({
-      Name: propTypes.string.isRequired,
-      Description: propTypes.string.isRequired,
-    }).isRequired,
-    Director: propTypes.shape({
-      Name: propTypes.string.isRequired,
-      Bio: propTypes.string,
-      BirthYear: propTypes.string,
-    }).isRequired,
-    Actors: propTypes.array.isRequired,
-    ImagePath: propTypes.string.isRequired,
-  }).isRequired,
-  onBackClick: propTypes.func.isRequired,
-};*/

@@ -35,7 +35,6 @@ class MovieView extends React.Component {
           .then(() => {
             this.props.addFavorite(movie);
             alert('Movie Added to Favorites.');
-            counter = +1;
 
             //const newList = currentList.push(movie);
             //setCurrentList(newList);

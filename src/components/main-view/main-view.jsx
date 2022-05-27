@@ -4,12 +4,7 @@ import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 
-import {
-  setMovies,
-  //setUser,
-  setUserData,
-  setFavorite,
-} from '../../actions/actions';
+import { setMovies, setUserData, setFavorite } from '../../actions/actions';
 
 import './main-view.scss';
 
@@ -52,7 +47,7 @@ class MainView extends React.Component {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        //Assign the result to the state>
+        //Assign the result to the state
         this.props.setMovies(response.data);
       })
       .catch(function (error) {
@@ -245,7 +240,6 @@ class MainView extends React.Component {
 let mapStateToProps = (state) => {
   return {
     movies: state.movies,
-    //user: state.user,
     userData: state.userData,
     favoriteMovies: state.favoriteMovies,
   };
@@ -253,7 +247,6 @@ let mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, {
   setMovies,
-  //setUser,
   setUserData,
   setFavorite,
 })(MainView);

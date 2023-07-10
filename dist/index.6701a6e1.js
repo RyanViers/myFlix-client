@@ -25267,7 +25267,7 @@ class MainView extends _reactDefault.default.Component {
         });
     }
     getMovies(token) {
-        _axiosDefault.default.get('https://ryan-viers-movie-app.herokuapp.com/movies', {
+        _axiosDefault.default.get('http://movie-api-dev.us-east-1.elasticbeanstalk.com/movies', {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -40101,7 +40101,7 @@ function LoginView(props) {
         e.preventDefault();
         const isReq = validate();
         if (isReq) //Send a request to the server for authentication.
-        _axiosDefault.default.post('https://ryan-viers-movie-app.herokuapp.com/login', {
+        _axiosDefault.default.post('http://movie-api-dev.us-east-1.elasticbeanstalk.com/login', {
             Username: username,
             Password: password
         }).then((response)=>{
@@ -40315,7 +40315,7 @@ function RegistrationView(props) {
     const handleSubmit = (e)=>{
         e.preventDefault();
         const isReq = validate();
-        if (isReq) _axiosDefault.default.post('https://ryan-viers-movie-app.herokuapp.com/users', {
+        if (isReq) _axiosDefault.default.post('http://movie-api-dev.us-east-1.elasticbeanstalk.com/users', {
             Username: username,
             Password: password,
             Email: email,

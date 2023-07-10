@@ -43,7 +43,7 @@ class MainView extends React.Component {
 
   getMovies(token) {
     axios
-      .get('https://ryan-viers-movie-app.herokuapp.com/movies', {
+      .get('http://movie-api-dev.us-east-1.elasticbeanstalk.com/movies', {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
@@ -59,7 +59,7 @@ class MainView extends React.Component {
     const username = localStorage.getItem('user');
 
     axios
-      .get(`https://ryan-viers-movie-app.herokuapp.com/users/${username}`, {
+      .get(`http://movie-api-dev.us-east-1.elasticbeanstalk.com/users/${username}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {

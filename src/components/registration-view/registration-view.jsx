@@ -67,7 +67,7 @@ export function RegistrationView(props) {
     const isReq = validate();
     if (isReq) {
       axios
-        .post('https://ryan-viers-movie-app.herokuapp.com/users', {
+        .post('http://movie-api-dev.us-east-1.elasticbeanstalk.com/users', {
           Username: username,
           Password: password,
           Email: email,

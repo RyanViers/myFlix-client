@@ -23,7 +23,7 @@ class MovieView extends React.Component {
       } else {
         axios
           .post(
-            `https://ryan-viers-movie-app.herokuapp.com/users/${userData.Username}/movies/${movie._id}`,
+            `http://movie-api-dev.us-east-1.elasticbeanstalk.com/users/${userData.Username}/movies/${movie._id}`,
             {
               FavoriteMovies: movie._id,
             },

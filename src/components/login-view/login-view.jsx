@@ -39,7 +39,7 @@ export function LoginView(props) {
     if (isReq) {
       //Send a request to the server for authentication.
       axios
-        .post('https://ryan-viers-movie-app.herokuapp.com/login', {
+        .post('http://movie-api-dev.us-east-1.elasticbeanstalk.com/login', {
           Username: username,
           Password: password,
         })

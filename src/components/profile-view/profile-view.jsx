@@ -21,7 +21,7 @@ function ProfileView(props) {
     e.preventDefault();
     axios
       .put(
-        `https://ryan-viers-movie-app.herokuapp.com/users/${userData.Username}`,
+        `http://movie-api-dev.us-east-1.elasticbeanstalk.com/users/${userData.Username}`,
         updatedUserData
       )
       .then((response) => {
@@ -47,7 +47,7 @@ function ProfileView(props) {
   const deleteProfile = (e) => {
     axios
       .delete(
-        `https://ryan-viers-movie-app.herokuapp.com/users/${userData.Username}`
+        `http://movie-api-dev.us-east-1.elasticbeanstalk.com//users/${userData.Username}`
       )
       .then((response) => {
         alert('Your profile has beeen deleted');
@@ -64,7 +64,7 @@ function ProfileView(props) {
   const removeFav = (id) => {
     axios
       .delete(
-        `https://ryan-viers-movie-app.herokuapp.com/users/${userData.Username}/movies/${id}`,
+        `http://movie-api-dev.us-east-1.elasticbeanstalk.com/users/${userData.Username}/movies/${id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

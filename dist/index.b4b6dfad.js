@@ -25146,7 +25146,7 @@ class MainView extends _reactDefault.default.Component {
         }
     }
     getMovies(token) {
-        _axiosDefault.default.get('https://ryan-viers-movie-app.herokuapp.com/movies', {
+        _axiosDefault.default.get('http://movie-api-dev.us-east-1.elasticbeanstalk.com/movies', {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -25162,7 +25162,7 @@ class MainView extends _reactDefault.default.Component {
     addFavoriteMovie(movie, user) {
         const token = localStorage.getItem('token');
         console.log(user.Email);
-        _axiosDefault.default.post(`https://ryan-viers-movie-app.herokuapp.com/users/${user}/movies/${movie._id}`, {
+        _axiosDefault.default.post(`http://movie-api-dev.us-east-1.elasticbeanstalk.com/users/${user}/movies/${movie._id}`, {
             FavoriteMovies: movie._id
         }, {
             headers: {
@@ -36127,7 +36127,7 @@ function LoginView(props) {
         e.preventDefault();
         const isReq = validate();
         if (isReq) //Send a request to the server for authentication.
-        _axiosDefault.default.post('https://ryan-viers-movie-app.herokuapp.com/login', {
+        _axiosDefault.default.post('http://movie-api-dev.us-east-1.elasticbeanstalk.com/login', {
             Username: username,
             Password: password
         }).then((response)=>{
@@ -36645,7 +36645,7 @@ function RegistrationView(props) {
     const handleSubmit = (e)=>{
         e.preventDefault();
         const isReq = validate();
-        if (isReq) _axiosDefault.default.post('https://ryan-viers-movie-app.herokuapp.com/users', {
+        if (isReq) _axiosDefault.default.post('http://movie-api-dev.us-east-1.elasticbeanstalk.com/users', {
             Username: username,
             Password: password,
             Email: email,
@@ -37038,7 +37038,7 @@ function ProfileView({ user , movies , onBackClick  }) {
     let token1 = localStorage.getItem('token');
     _axiosDefault.default.defaults.headers.common['Authorization'] = `Bearer ${token1}`;
     const getUserData = (token, username)=>{
-        _axiosDefault.default.get(`https://ryan-viers-movie-app.herokuapp.com/users/${username}`, {
+        _axiosDefault.default.get(`http://movie-api-dev.us-east-1.elasticbeanstalk.com/users/${username}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -37056,7 +37056,7 @@ function ProfileView({ user , movies , onBackClick  }) {
     }, []);
     const handleSubmit = (e1)=>{
         e1.preventDefault();
-        _axiosDefault.default.put(`https://ryan-viers-movie-app.herokuapp.com/users/${userdata.Username}`, updatedUser).then((response)=>{
+        _axiosDefault.default.put(`http://movie-api-dev.us-east-1.elasticbeanstalk.com/users/${userdata.Username}`, updatedUser).then((response)=>{
             setUserdata(response.data);
             alert('Profile updated');
         }).catch((e)=>{
@@ -37070,7 +37070,7 @@ function ProfileView({ user , movies , onBackClick  }) {
         });
     };
     const deleteProfile = (e2)=>{
-        _axiosDefault.default.delete(`https://ryan-viers-movie-app.herokuapp.com/users/${userdata.Username}`).then((response)=>{
+        _axiosDefault.default.delete(`http://movie-api-dev.us-east-1.elasticbeanstalk.com/users/${userdata.Username}`).then((response)=>{
             alert('Your profile has beeen deleted');
             localStorage.removeItem('user');
             localStorage.removeItem('token');
@@ -37080,7 +37080,7 @@ function ProfileView({ user , movies , onBackClick  }) {
         });
     };
     const removeFav = (id)=>{
-        _axiosDefault.default.delete(`https://ryan-viers-movie-app.herokuapp.com/users/${userdata.Username}/movies/${id}`, {
+        _axiosDefault.default.delete(`http://movie-api-dev.us-east-1.elasticbeanstalk.com/users/${userdata.Username}/movies/${id}`, {
             headers: {
                 Authorization: `Bearer ${token1}`
             }
